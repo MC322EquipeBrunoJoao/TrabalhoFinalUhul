@@ -10,6 +10,8 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("Plants Vs Zombies");
+		config.setResizable(false);
+		config.setWindowedMode(1365, 700);
 		new Lwjgl3Application(new PlantsVsZombies(), config);
 	}
 }

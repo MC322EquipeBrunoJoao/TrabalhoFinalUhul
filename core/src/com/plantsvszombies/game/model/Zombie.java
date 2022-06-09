@@ -14,7 +14,7 @@ public class Zombie extends Character implements DinamicEntity {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private float velocity = 100;
+	private float[] velocity = {-100, 0};
 
 	public Zombie(float health, Texture texture, float x, float y, int width, int height) {
 		super(health, texture, x, y, width, height);
@@ -26,7 +26,7 @@ public class Zombie extends Character implements DinamicEntity {
 	    return newZombie;
 	}
 	
-	public float getVelocity() {
+	public float[] getVelocity() {
 		return velocity;
 	}
  }

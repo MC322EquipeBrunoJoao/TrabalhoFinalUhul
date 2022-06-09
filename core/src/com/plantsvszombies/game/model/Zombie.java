@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
-public class Zombie extends Character implements DinamicEntity {
+public class Zombie extends Character implements DynamicEntity {
 	
 	/**
 	 * 
@@ -28,5 +28,10 @@ public class Zombie extends Character implements DinamicEntity {
 	
 	public float[] getVelocity() {
 		return velocity;
+	}
+	
+	public void move(double time) {
+		x += velocity[0] * time;
+		y += velocity[1] * time;
 	}
  }

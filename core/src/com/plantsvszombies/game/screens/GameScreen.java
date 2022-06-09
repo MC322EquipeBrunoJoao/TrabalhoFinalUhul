@@ -9,7 +9,13 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.TimeUtils;
 import com.plantsvszombies.game.PlantsVsZombies;
+import com.plantsvszombies.game.model.Pea;
+import com.plantsvszombies.game.model.PeaShooter;
 
 public class GameScreen extends ScreenAdapter {
 	
@@ -17,13 +23,17 @@ public class GameScreen extends ScreenAdapter {
 	private TiledMap map;
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
-
+	
+	PeaShooter shooter;
+	Array<Rectangle> projectiles = new Array<Rectangle>();
+	long lastShootTime = TimeUtils.millis();
+	Texture pea = new Texture(Gdx.files.internal("pea.png"));
+	
 	public GameScreen(PlantsVsZombies game) {
 		this.game = game;
 	}
-	
 
-	@Override
+		@Override
 	    public void show() {
 	        TmxMapLoader loader = new TmxMapLoader();
 	        map = loader.load("mapa.tmx");
@@ -32,14 +42,26 @@ public class GameScreen extends ScreenAdapter {
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
 	        camera = new OrthographicCamera(1000, 1000);
 	        
+	        shooter = new PeaShooter(100, 500, 500, 100, 100, 1, 1);
+	        projectiles.add(shooter.shoot());
 	        
 	        //Gdx.input.setInputProcessor(entity);
 	        
 	    }
+		
 
 	    @Override
 	    public void render(float delta) {
 	        
+	    	
+	    	if(TimeUtils.timeSinceMillis(lastShootTime) > 3000) {
+	    		projectiles.add(shooter.shoot());
+	    		lastShootTime = TimeUtils.millis();
+	    	}
+	    	
+	    	for (Rectangle pea : projectiles) {
+	    		pea.x += 100 * Gdx.graphics.getDeltaTime();
+	    	}
 
 	        Gdx.gl.glClearColor(0, 0, .25f, 1);
 	        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -60,6 +82,15 @@ public class GameScreen extends ScreenAdapter {
 	        
 	        
 	        game.batch.begin();
+	        
+	        Vector2 v2s = new Vector2();
+	        shooter.getCenter(v2s);
+	        game.batch.draw(shooter.getTexture(), v2s.x, v2s.y, shooter.width, shooter.height);
+	        for (Rectangle p : projectiles) {
+	        	Vector2 v2 = new Vector2();
+	        	p.getCenter(v2);
+	        	game.batch.draw(pea, v2.x, v2.y, 20, 20);
+	        }
 	        //entity.draw(game.batch);
 	        //controller.update()
 	        //controller.draw()

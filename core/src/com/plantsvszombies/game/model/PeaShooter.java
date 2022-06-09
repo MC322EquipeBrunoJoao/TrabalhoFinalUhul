@@ -2,6 +2,7 @@ package com.plantsvszombies.game.model;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Vector2;
 
 public class PeaShooter extends Plant {
 	
@@ -15,6 +16,8 @@ public class PeaShooter extends Plant {
 	}
 	
 	public Pea shoot() {
-		return new Pea(x, y);
+		Vector2 vector = new Vector2();
+		this.getCenter(vector);
+		return new Pea(vector.x+50, vector.y+40);
 	}
 }

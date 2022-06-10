@@ -13,6 +13,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.model.Pea;
 import com.plantsvszombies.game.model.PeaShooter;
@@ -23,6 +25,7 @@ public class GameScreen extends ScreenAdapter {
 	private TiledMap map;
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
+	private Viewport viewport;
 	
 	PeaShooter shooter;
 	Array<Rectangle> projectiles = new Array<Rectangle>();
@@ -40,9 +43,10 @@ public class GameScreen extends ScreenAdapter {
 
 	        
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
-	        camera = new OrthographicCamera(1000, 1000);
+	        camera = new OrthographicCamera();
+	        //viewport = new FitViewport(400, 400, camera);
 	        
-	        shooter = new PeaShooter(100, 500, 500, 100, 100, 1, 1);
+	        shooter = new PeaShooter(100, 500, 700, 100, 100, 1, 1);
 	        projectiles.add(shooter.shoot());
 	        
 	        //Gdx.input.setInputProcessor(entity);
@@ -52,7 +56,6 @@ public class GameScreen extends ScreenAdapter {
 
 	    @Override
 	    public void render(float delta) {
-	        
 	    	
 	    	if(TimeUtils.timeSinceMillis(lastShootTime) > 3000) {
 	    		projectiles.add(shooter.shoot());
@@ -97,7 +100,7 @@ public class GameScreen extends ScreenAdapter {
 	        game.batch.end();
 
 	    }
-
+	    
 	    @Override
 	    public void hide() {
 	        super.dispose();
@@ -105,6 +108,7 @@ public class GameScreen extends ScreenAdapter {
 	    
 	    public void resize(int width, int height) {
 	    	
+	    	//viewport.update(width * 2, height * 2);
 	    	camera.viewportWidth = width/10;
 	    	camera.viewportHeight = height/10;
 	    	camera.update();

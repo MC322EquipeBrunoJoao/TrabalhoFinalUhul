@@ -1,6 +1,6 @@
 package com.plantsvszombies.game.model;
 
-public interface DynamicEntity {
+public interface IDynamicEntity {
 	float[] getVelocity();
 	void move(double time);
 }

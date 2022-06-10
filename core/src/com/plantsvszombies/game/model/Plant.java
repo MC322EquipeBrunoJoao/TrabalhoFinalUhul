@@ -4,13 +4,13 @@ import com.badlogic.gdx.graphics.Texture;
 
 public abstract class Plant extends Character{
 	
-	private int i;
-	private int j;
+	private int linha;
+	private int coluna;
 	
-	public Plant(float health, Texture texture, float x, float y, int width, int height, int i, int j) {
+	public Plant(float health, Texture texture, float x, float y, int width, int height, int linha, int coluna) {
 		super(health, texture, x, y, width, height);
-		this.i = i;
-		this.j = j;
+		this.linha = linha;
+		this.coluna = coluna;
 	}
 
 }

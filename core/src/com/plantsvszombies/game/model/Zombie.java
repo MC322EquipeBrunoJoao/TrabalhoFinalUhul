@@ -7,7 +7,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
-public class Zombie extends Character implements DynamicEntity {
+public class Zombie extends Character implements IDynamicEntity {
 	
 	/**
 	 * 

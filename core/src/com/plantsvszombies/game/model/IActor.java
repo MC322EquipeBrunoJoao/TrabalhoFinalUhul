@@ -1,5 +1,5 @@
 package com.plantsvszombies.game.model;
 
-public interface Actor {
+public interface IActor {
 	void act();
 }

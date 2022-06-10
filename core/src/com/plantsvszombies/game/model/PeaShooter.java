@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.plantsvszombies.game.controller.ActionListener;
 
 public class PeaShooter extends Plant implements IActor {
 	
@@ -18,8 +19,9 @@ public class PeaShooter extends Plant implements IActor {
 		super(health, new Texture(Gdx.files.internal("shooter.png")), x, y, width, height, i, j);
 	}
 	
-	public void act() {
+	public void act(ActionListener actionListener) {
 		if (TimeUtils.timeSinceMillis(lastShootTime) > 2000) {
+			actionListener.notifyNewEntity(shoot());
 			lastShootTime = TimeUtils.millis();
 		}
 	}

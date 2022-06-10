@@ -2,22 +2,22 @@ package com.plantsvszombies.game.controller;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.utils.TimeUtils;
 import com.plantsvszombies.game.model.IActor;
 import com.plantsvszombies.game.model.IDynamicEntity;
 
-public class TimeController {
+public class EntityController {
 	
 	private ArrayList<IDynamicEntity> dynamicEntities = new ArrayList<IDynamicEntity>();
 	private ArrayList<IActor> actors = new ArrayList<IActor>();
-	long currentTime = TimeUtils.millis();
+	private ActionListener actionListener;
+
 	
 	public void controlPeriodicActions(double deltaTime) {		
-		for (IDynamicEntity dinamicEntity : dynamicEntities) {
-			dinamicEntity.move(deltaTime);
+		for (IDynamicEntity dynamicEntity : dynamicEntities) {
+			dynamicEntity.move(deltaTime);
 		}
 		for (IActor actor : actors) {
-			actor.act();
+			actor.act(actionListener);
 		}
 	}
 	

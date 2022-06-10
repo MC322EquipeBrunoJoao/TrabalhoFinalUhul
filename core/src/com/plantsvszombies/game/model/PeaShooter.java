@@ -3,16 +3,25 @@ package com.plantsvszombies.game.model;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.TimeUtils;
 
-public class PeaShooter extends Plant {
+public class PeaShooter extends Plant implements IActor {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private long lastShootTime;
 
 	public PeaShooter(float health, float x, float y, int width, int height, int i, int j) {
+		
 		super(health, new Texture(Gdx.files.internal("shooter.png")), x, y, width, height, i, j);
+	}
+	
+	public void act() {
+		if (TimeUtils.timeSinceMillis(lastShootTime) > 2000) {
+			lastShootTime = TimeUtils.millis();
+		}
 	}
 	
 	public Pea shoot() {

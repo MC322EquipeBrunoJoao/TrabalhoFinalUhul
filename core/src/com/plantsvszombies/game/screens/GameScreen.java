@@ -1,6 +1,7 @@
 package com.plantsvszombies.game.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -13,19 +14,19 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.plantsvszombies.game.PlantsVsZombies;
+import com.plantsvszombies.game.controller.InputController;
 import com.plantsvszombies.game.model.Pea;
 import com.plantsvszombies.game.model.PeaShooter;
+import com.plantsvszombies.game.model.Tile;
 
-public class GameScreen extends ScreenAdapter {
+public class GameScreen extends ScreenAdapter implements InputProcessor{
 	
 	private PlantsVsZombies game;
 	private TiledMap map;
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
-	private Viewport viewport;
+	private InputController inputController;
 	
 	PeaShooter shooter;
 	Array<Rectangle> projectiles = new Array<Rectangle>();
@@ -34,6 +35,7 @@ public class GameScreen extends ScreenAdapter {
 	
 	public GameScreen(PlantsVsZombies game) {
 		this.game = game;
+		this.inputController = new InputController();
 	}
 
 		@Override
@@ -43,19 +45,19 @@ public class GameScreen extends ScreenAdapter {
 
 	        
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
-	        camera = new OrthographicCamera();
-	        //viewport = new FitViewport(400, 400, camera);
+	        camera = new OrthographicCamera(1000, 1000);
 	        
-	        shooter = new PeaShooter(100, 500, 700, 100, 100, 1, 1);
+	        shooter = new PeaShooter(100, 500, 500, 100, 100, 1, 1);
 	        projectiles.add(shooter.shoot());
 	        
-	        //Gdx.input.setInputProcessor(entity);
+	        Gdx.input.setInputProcessor(this);
 	        
 	    }
 		
 
 	    @Override
 	    public void render(float delta) {
+	    	
 	    	
 	    	if(TimeUtils.timeSinceMillis(lastShootTime) > 3000) {
 	    		projectiles.add(shooter.shoot());
@@ -100,7 +102,7 @@ public class GameScreen extends ScreenAdapter {
 	        game.batch.end();
 
 	    }
-	    
+
 	    @Override
 	    public void hide() {
 	        super.dispose();
@@ -108,12 +110,64 @@ public class GameScreen extends ScreenAdapter {
 	    
 	    public void resize(int width, int height) {
 	    	
-	    	//viewport.update(width * 2, height * 2);
 	    	camera.viewportWidth = width/10;
 	    	camera.viewportHeight = height/10;
 	    	camera.update();
 	    	
 	    }
+
+		@Override
+		public boolean keyDown(int keycode) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean keyUp(int keycode) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean keyTyped(char character) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+			
+			Tile tile = new Tile(screenX, Gdx.graphics.getHeight() - screenY, map);
+			
+			inputController.HandleEvent(tile);
+			
+			
+			return false;
+		}
+
+		@Override
+		public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean touchDragged(int screenX, int screenY, int pointer) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean mouseMoved(int screenX, int screenY) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean scrolled(float amountX, float amountY) {
+			// TODO Auto-generated method stub
+			return false;
+		}
 	
 
 }

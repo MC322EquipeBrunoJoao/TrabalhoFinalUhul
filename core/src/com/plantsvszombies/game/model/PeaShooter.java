@@ -21,7 +21,7 @@ public class PeaShooter extends Plant implements IActor {
 	
 	public void act(ActionListener actionListener) {
 		if (TimeUtils.timeSinceMillis(lastShootTime) > 2000) {
-			actionListener.notifyNewEntity(shoot());
+			actionListener.notifyNewPlantProjectile(shoot());
 			lastShootTime = TimeUtils.millis();
 		}
 	}

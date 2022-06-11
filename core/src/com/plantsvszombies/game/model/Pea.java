@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Pea extends Entity implements IDynamicEntity {
 	
-	private float[] velocity = {0f ,100f};
+	private float[] velocity = {100f, 0f};
 	private float damage = 34;
 	
 	public Pea(float x, float y) {

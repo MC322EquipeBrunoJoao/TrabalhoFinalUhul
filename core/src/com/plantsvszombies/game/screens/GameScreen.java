@@ -15,10 +15,13 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.plantsvszombies.game.PlantsVsZombies;
+import com.plantsvszombies.game.controller.EntityController;
 import com.plantsvszombies.game.controller.InputController;
+import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Pea;
 import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Tile;
+import com.plantsvszombies.game.model.Zombie;
 
 public class GameScreen extends ScreenAdapter implements InputProcessor{
 	
@@ -27,11 +30,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
 	private InputController inputController;
-	
-	PeaShooter shooter;
-	Array<Rectangle> projectiles = new Array<Rectangle>();
-	long lastShootTime = TimeUtils.millis();
-	Texture pea = new Texture(Gdx.files.internal("pea.png"));
+	private EntityController entityController = new EntityController();
 	
 	public GameScreen(PlantsVsZombies game) {
 		this.game = game;
@@ -47,8 +46,8 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
 	        camera = new OrthographicCamera(1000, 1000);
 	        
-	        shooter = new PeaShooter(100, 500, 500, 100, 100, 1, 1);
-	        projectiles.add(shooter.shoot());
+	        entityController.addPlant(new PeaShooter(100, 500, 500, 100, 100, 1, 1));
+	        entityController.addZombie(new Zombie(100, 400, new Texture(Gdx.files.internal("zombie.png")), 1000, 500, 100, 100));
 	        
 	        Gdx.input.setInputProcessor(this);
 	        
@@ -59,14 +58,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	    public void render(float delta) {
 	    	
 	    	
-	    	if(TimeUtils.timeSinceMillis(lastShootTime) > 3000) {
-	    		projectiles.add(shooter.shoot());
-	    		lastShootTime = TimeUtils.millis();
-	    	}
-	    	
-	    	for (Rectangle pea : projectiles) {
-	    		pea.x += 100 * Gdx.graphics.getDeltaTime();
-	    	}
+	    	entityController.controlEntities(Gdx.graphics.getDeltaTime());
 
 	        Gdx.gl.glClearColor(0, 0, .25f, 1);
 	        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -88,13 +80,8 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        
 	        game.batch.begin();
 	        
-	        Vector2 v2s = new Vector2();
-	        shooter.getCenter(v2s);
-	        game.batch.draw(shooter.getTexture(), v2s.x, v2s.y, shooter.width, shooter.height);
-	        for (Rectangle p : projectiles) {
-	        	Vector2 v2 = new Vector2();
-	        	p.getCenter(v2);
-	        	game.batch.draw(pea, v2.x, v2.y, 20, 20);
+	        for (Entity entity : entityController.getEntities()) {
+	        	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY(), entity.height, entity.width);
 	        }
 	        //entity.draw(game.batch);
 	        //controller.update()

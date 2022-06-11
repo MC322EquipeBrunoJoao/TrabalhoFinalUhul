@@ -20,6 +20,7 @@ import com.plantsvszombies.game.controller.InputController;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Pea;
 import com.plantsvszombies.game.model.PeaShooter;
+import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Tile;
 import com.plantsvszombies.game.model.Zombie;
 
@@ -124,12 +125,17 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 		@Override
 		public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 			
+			//lembra de depois adicionar um mapController
+			
 			Tile tile = new Tile(screenX, Gdx.graphics.getHeight() - screenY, map);
 			
-			inputController.HandleEvent(tile);
+			Plant plant = inputController.HandleEvent(tile);
+			
+			if(plant != null)
+				entityController.addPlant(plant);
 			
 			
-			return false;
+			return true;
 		}
 
 		@Override

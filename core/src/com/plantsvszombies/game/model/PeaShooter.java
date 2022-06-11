@@ -19,6 +19,8 @@ public class PeaShooter extends Plant implements IActor {
 		super(health, new Texture(Gdx.files.internal("shooter.png")), x, y, width, height, i, j);
 	}
 	
+	
+
 	public void act(ActionListener actionListener) {
 		if (TimeUtils.timeSinceMillis(lastShootTime) > 2000) {
 			actionListener.notifyNewPlantProjectile(shoot());

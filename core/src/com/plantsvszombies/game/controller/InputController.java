@@ -2,10 +2,13 @@ package com.plantsvszombies.game.controller;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.plantsvszombies.game.model.IActor;
+import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Tile;
 
 public class InputController {
+	private boolean isPlantSelected = false;
+	private String selectedPlantType = null;
 
 	public InputController() {
 		// TODO Auto-generated constructor stub
@@ -17,12 +20,48 @@ public class InputController {
 		System.out.println(tile.getPositionTileY());
 		System.out.println(tile.isShop());
 		
+		if(!isPlantSelected && !tile.isShop()) {
+			return null;
+		}
+		
 		//se o tile eh um tile de loja, seleciona nova planta pra criacao
-		return null;
 		
-		//se ha uma planta selecionada, retorna a nova planta
-		//return new PeaShooter(...);
+		if(!isPlantSelected) {
+			isPlantSelected = true;
+			selectedPlantType = tile.getPlantType();
+			return null;
+			
+		}
 		
+		if(tile.isOutOfBounds() || tile.isShop()) {
+			return null;
+		}
+		
+		
+		switch(selectedPlantType) {
+		
+		case "PeaShooter": 
+			isPlantSelected = false;
+			selectedPlantType = null;
+			
+			return new PeaShooter(
+				
+				100,
+				tile.getX(),
+				tile.getY(),
+				tile.getWidth(),
+				tile.getHeight(),
+				tile.getPositionTileX(),
+				tile.getPositionTileY()
+				
+				);
+			
+		default:
+			return null;
+		
+		}
+		
+	
 	}
 	
 	

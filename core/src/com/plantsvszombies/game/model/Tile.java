@@ -7,7 +7,7 @@ public class Tile {
 	private TiledMap map;
 	private boolean isShop;
 	private boolean isOutOfBounds;
-	private String plantType;
+	private String plantType = "PeaShooter";
 
 	
 	public Tile(int xPixels, int yPixels, TiledMap map) {
@@ -51,6 +51,46 @@ public class Tile {
 		return isShop;
 	}
 	
+	public boolean isOutOfBounds() {
+		return isOutOfBounds;
+	}
 	
-
+	public float getX() {
+		
+		int tileX = getPositionTileX();
+		
+		double xCenterPixels = (tileX) * map.getProperties()
+											.get("tilewidth", Integer.class) - 10 ;
+		
+		return (float)xCenterPixels;
+		
+		
+	}
+	
+	public float getY() {
+		
+		int tileY = getPositionTileY();
+		
+		double yCenterPixels = (tileY) * map.getProperties()
+											.get("tileheight", Integer.class) + 20 ;
+		
+		return (float)yCenterPixels;
+		
+		
+	}
+	
+	public String getPlantType() {
+		return plantType;
+	}
+	
+	public int getWidth() {
+		
+		return map.getProperties().get("tilewidth", Integer.class);		
+	}
+	
+	public int getHeight() {
+		
+		return map.getProperties().get("tileheight", Integer.class);
+		
+	}
 }

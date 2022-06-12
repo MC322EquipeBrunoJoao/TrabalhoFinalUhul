@@ -17,14 +17,13 @@ public class Zombie extends Character implements IDynamicEntity {
 	private float[] velocity = {-100, 0};
 	private float damage;
 
-	public Zombie(float health, float damage, Texture texture, float x, float y, int width, int height) {
-		super(health, texture, x, y, width, height);
-		this.takeDamage(damage);
+	public Zombie(float health, float damage, Texture texture, float x, float y) {
+		super(health, texture, x, y, 100);
 	}
 
 	public static Zombie randomSpawn() {
 		Texture zombieImage = new Texture(Gdx.files.internal("zombie.png"));
-		Zombie newZombie = new Zombie(100, 400, zombieImage, 800, MathUtils.random(64, 480), 70, 70);
+		Zombie newZombie = new Zombie(100, 400, zombieImage, 1350, MathUtils.random(0, 500));
 	    return newZombie;
 	}
 	

@@ -7,10 +7,10 @@ import com.badlogic.gdx.math.Vector2;
 public class Pea extends Entity implements IDynamicEntity {
 	
 	private float[] velocity = {100f, 0f};
-	private float damage = 34;
+	private float damage = 35f;
 	
 	public Pea(float x, float y) {
-		super(new Texture(Gdx.files.internal("pea.png")), x, y, 35, 35);
+		super(new Texture(Gdx.files.internal("pea.png")), x, y, 35, 23);
 	}
 	
 	public float[] getVelocity() {

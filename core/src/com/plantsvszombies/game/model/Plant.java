@@ -12,8 +12,8 @@ public abstract class Plant extends Character{
 	private int linha;
 	private int coluna;
 	
-	public Plant(float health, Texture texture, float x, float y, int width, int height, int linha, int coluna) {
-		super(health, texture, x, y, width, height);
+	public Plant(float health, Texture texture, float x, float y, int linha, int coluna) {
+		super(health, texture, x, y, 100);
 		this.linha = linha;
 		this.coluna = coluna;
 	}

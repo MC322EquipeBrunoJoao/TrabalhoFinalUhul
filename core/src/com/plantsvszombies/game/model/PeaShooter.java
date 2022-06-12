@@ -14,9 +14,9 @@ public class PeaShooter extends Plant implements IActor {
 	private static final long serialVersionUID = 1L;
 	private long lastShootTime;
 
-	public PeaShooter(float health, float x, float y, int width, int height, int i, int j) {
+	public PeaShooter(float health, float x, float y, int i, int j) {
 		
-		super(health, new Texture(Gdx.files.internal("shooter.png")), x, y, width, height, i, j);
+		super(health, new Texture(Gdx.files.internal("shooter.png")), x, y, i, j);
 	}
 	
 	

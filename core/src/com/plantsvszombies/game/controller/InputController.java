@@ -49,8 +49,6 @@ public class InputController {
 				100,
 				tile.getX(),
 				tile.getY(),
-				tile.getWidth(),
-				tile.getHeight(),
 				tile.getPositionTileX(),
 				tile.getPositionTileY()
 				

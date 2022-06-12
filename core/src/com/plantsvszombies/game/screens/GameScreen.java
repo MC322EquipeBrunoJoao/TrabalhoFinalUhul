@@ -47,8 +47,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
 	        camera = new OrthographicCamera(1000, 1000);
 	        
-	        entityController.addPlant(new PeaShooter(100, 500, 500, 100, 100, 1, 1));
-	        entityController.addZombie(new Zombie(100, 400, new Texture(Gdx.files.internal("zombie.png")), 1000, 500, 100, 100));
+	        entityController.addZombie(new Zombie(100, 40, new Texture(Gdx.files.internal("zombie.png")), 1400, 500));
 	        
 	        Gdx.input.setInputProcessor(this);
 	        
@@ -57,7 +56,6 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 
 	    @Override
 	    public void render(float delta) {
-	    	
 	    	
 	    	entityController.controlEntities(Gdx.graphics.getDeltaTime());
 
@@ -82,6 +80,8 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        game.batch.begin();
 	        
 	        for (Entity entity : entityController.getEntities()) {
+	        	Vector2 vetor = new Vector2();
+	        	entity.getCenter(vetor);
 	        	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY(), entity.height, entity.width);
 	        }
 	        //entity.draw(game.batch);

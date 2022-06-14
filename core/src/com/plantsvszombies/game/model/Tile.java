@@ -59,7 +59,7 @@ public class Tile {
 		
 		int tileX = getPositionTileX();
 		
-		double xCenterPixels = (tileX-.4) * map.getProperties()
+		double xCenterPixels = (tileX) * map.getProperties()
 											.get("tilewidth", Integer.class)  ;
 		
 		return (float)xCenterPixels;

@@ -19,6 +19,7 @@ public class SunFlower extends Plant {
  	
 	public void act(ActionListener actionListener) {
 		if (TimeUtils.timeSinceMillis(timeLastEnergy) > 5000) {
+			timeLastEnergy = TimeUtils.millis();
 			generateSun(actionListener);
 		}
 	}

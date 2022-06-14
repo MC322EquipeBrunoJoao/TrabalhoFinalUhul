@@ -11,6 +11,7 @@ public class MasterController {
 	private ActionListener actionListener = new ActionListener(this);
 	private EntityController entityController = new EntityController(actionListener);
 	private InputController inputController = new InputController();
+	private MapController mapController = new MapController();
 	private int energy = 0;
 	
 	public void control(float deltaTime) {
@@ -39,6 +40,15 @@ public class MasterController {
 	
 	public ArrayList<Entity> getEntities() {
 		return entityController.getEntities();
+	}
+	
+	public InputController getInputController() {
+		return inputController;
+	}
+	
+	public MapController getMapController() {
+		return mapController;
+		
 	}
 	
 }

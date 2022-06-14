@@ -42,9 +42,10 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 
 		@Override
 	    public void show() {
-	        TmxMapLoader loader = new TmxMapLoader();
-	        map = loader.load("mapa.tmx");
-
+	        //TmxMapLoader loader = new TmxMapLoader();
+	        //map = loader.load("mapa.tmx");
+			map = masterController.getMapController().createMap("mapa.tmx");
+			
 	        
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
 	        camera = new OrthographicCamera(1000, 1000);
@@ -129,9 +130,10 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 			
 			//lembra de depois adicionar um mapController
 			
-			Tile tile = new Tile(screenX, Gdx.graphics.getHeight() - screenY, map);
+			//Tile tile = new Tile(screenX, screenY, map);
+			Tile tile = masterController.getMapController().getTile(screenX, Gdx.graphics.getHeight() - screenY);
 			
-			Plant plant = inputController.HandleEvent(tile);
+			Plant plant = masterController.getInputController().HandleEvent(tile);
 			
 			if(plant != null)
 				masterController.addPlant(plant);

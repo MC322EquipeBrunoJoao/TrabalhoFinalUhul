@@ -3,6 +3,7 @@ package com.plantsvszombies.game.controller;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
+import com.plantsvszombies.game.model.SunFlower;
 import com.plantsvszombies.game.model.Tile;
 
 public class InputController {
@@ -51,6 +52,25 @@ public class InputController {
 				tile.getPositionTileY()
 				
 				);
+			
+			
+		case "Sunflower":
+			isPlantSelected = false;
+			selectedPlantType = null;
+			
+			return new SunFlower(
+					
+					
+					tile.getX(),
+					tile.getY(),
+					tile.getPositionTileX(),
+					tile.getPositionTileX()
+					
+					
+					
+						
+					);
+			
 			
 		default:
 			return null;

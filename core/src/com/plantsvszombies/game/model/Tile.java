@@ -1,19 +1,27 @@
 package com.plantsvszombies.game.model;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 public class Tile {
-	private int xPixels, yPixels;
+	//private int xPixels, yPixels;
+	private int linha, coluna;
 	private TiledMap map;
 	private boolean isShop;
 	private boolean isOutOfBounds;
 	private String plantType = "PeaShooter";
 
 	
-	public Tile(int xPixels, int yPixels, TiledMap map) {
-		this.xPixels = xPixels;
-		this.yPixels = yPixels;
+	public Tile(int coluna, int linha, TiledMap map, String plantType) {
+		//this.xPixels = xPixels;
+		//this.yPixels = Gdx.graphics.getHeight() - reversedYPixels;
 		this.map = map;
+		this.linha = linha;
+		this.coluna = coluna;
+		
+		this.plantType = plantType;
+		
+		
 		
 		isShop = false;
 		if(getPositionTileY() > 4 &&
@@ -29,21 +37,13 @@ public class Tile {
 	
 	public int getPositionTileX() {
 		
-		int tileWidth = map.getProperties()
-						.get("tilewidth", Integer.class);
-		
-			
-		return xPixels / tileWidth;
+		return coluna;
 			
 	}
 	
 	public int getPositionTileY() {
 		
-		int tileHeight = map.getProperties()
-				.get("tileheight", Integer.class);
-		
-		return yPixels / tileHeight;
-		
+		return linha;
 		
 	}
 	
@@ -57,9 +57,8 @@ public class Tile {
 	
 	public float getX() {
 		
-		int tileX = getPositionTileX();
 		
-		double xCenterPixels = (tileX) * map.getProperties()
+		double xCenterPixels = (coluna) * map.getProperties()
 											.get("tilewidth", Integer.class)  ;
 		
 		return (float)xCenterPixels;
@@ -69,9 +68,8 @@ public class Tile {
 	
 	public float getY() {
 		
-		int tileY = getPositionTileY();
 		
-		double yCenterPixels = (tileY) * map.getProperties()
+		double yCenterPixels = (linha) * map.getProperties()
 											.get("tileheight", Integer.class);
 		return (float)yCenterPixels;
 		

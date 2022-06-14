@@ -14,21 +14,40 @@ public class EntityController {
 	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
 	private ArrayList<Pea> plantProjectiles = new ArrayList<Pea>();
 	private ArrayList<Entity> totalEntities = new ArrayList<Entity>();
-	private ActionListener actionListener = new ActionListener(this);
+	private ActionListener actionListener;
 	private long lastGeneration = TimeUtils.millis();
 	
+	public EntityController(ActionListener actionListener) {
+		this.actionListener = actionListener;
+	}
+	
 	private void controlZombiesAttacks(double deltaTime) {
+		
+		ArrayList<Plant> removedPlants = new ArrayList<Plant>();
+		
 		for (Zombie zombie : zombies) {
 			zombie.move(deltaTime);
 			for (Plant plant : plants) {
 				if (zombie.overlaps(plant)) {
-					plant.takeDamage(zombie.getDamage());
+					if (zombie.isMoving()) {
+						System.out.println("is moving");
+						zombie.stop();
+					}
+					plant.takeDamage(zombie.attack());
 					if (plant.isDead()) {
-						plants.remove(plant);
+						System.out.println("will resume");
+						zombie.resumeMovement();
+						totalEntities.remove(plant);
+						removedPlants.add(plant);
 					}
 				}
 			}
 		}
+		
+		for (Plant removedPlant : removedPlants) {
+			plants.remove(removedPlant);
+		}
+		
 	}
 	
 	private void controlPlantsActions() {

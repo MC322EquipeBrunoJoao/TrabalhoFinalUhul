@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.controller.EntityController;
 import com.plantsvszombies.game.controller.InputController;
+import com.plantsvszombies.game.controller.MasterController;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Pea;
 import com.plantsvszombies.game.model.PeaShooter;
@@ -31,7 +32,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
 	private InputController inputController;
-	private EntityController entityController = new EntityController();
+	private MasterController masterController = new MasterController();
 	
 	public GameScreen(PlantsVsZombies game) {
 		this.game = game;
@@ -47,7 +48,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
 	        camera = new OrthographicCamera(1000, 1000);
 	        
-	        entityController.addZombie(new Zombie(100, 40, new Texture(Gdx.files.internal("zombie.png")), 1400, 500));
+	        masterController.addZombie(new Zombie(100, 40, new Texture(Gdx.files.internal("zombie.png")), 1400, 500));
 	        
 	        Gdx.input.setInputProcessor(this);
 	        
@@ -57,7 +58,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	    @Override
 	    public void render(float delta) {
 	    	
-	    	entityController.controlEntities(Gdx.graphics.getDeltaTime());
+	    	masterController.control(Gdx.graphics.getDeltaTime());
 
 	        Gdx.gl.glClearColor(0, 0, .25f, 1);
 	        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -79,7 +80,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        
 	        game.batch.begin();
 	        
-	        for (Entity entity : entityController.getEntities()) {
+	        for (Entity entity : masterController.getEntities()) {
 	        	Vector2 vetor = new Vector2();
 	        	entity.getCenter(vetor);
 	        	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY(), entity.height, entity.width);
@@ -132,7 +133,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 			Plant plant = inputController.HandleEvent(tile);
 			
 			if(plant != null)
-				entityController.addPlant(plant);
+				masterController.addPlant(plant);
 			
 			
 			return true;

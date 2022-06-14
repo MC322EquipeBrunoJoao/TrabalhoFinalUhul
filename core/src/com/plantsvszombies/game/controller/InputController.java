@@ -1,7 +1,6 @@
 package com.plantsvszombies.game.controller;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.plantsvszombies.game.model.IActor;
 import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Tile;
@@ -45,8 +44,7 @@ public class InputController {
 			selectedPlantType = null;
 			
 			return new PeaShooter(
-				
-				100,
+
 				tile.getX(),
 				tile.getY(),
 				tile.getPositionTileX(),

@@ -1,5 +1,6 @@
 package com.plantsvszombies.game.controller;
 
+import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Pea;
 
 public class ActionListener {
@@ -14,8 +15,8 @@ public class ActionListener {
 		target.getEntityController().addPlantProjectile(projectile);
 	}
 	
-	public void notifyEnergyIncrement(int increment) {
-		target.incrementEnergy(increment);
+	public void notifyNewEntity(Entity entity) {
+		target.getEntityController().addEntity(entity);
 	}
 	
 }

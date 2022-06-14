@@ -22,6 +22,7 @@ import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Pea;
 import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
+import com.plantsvszombies.game.model.SunFlower;
 import com.plantsvszombies.game.model.Tile;
 import com.plantsvszombies.game.model.Zombie;
 
@@ -48,7 +49,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
 	        camera = new OrthographicCamera(1000, 1000);
 	        
-	        masterController.addZombie(new Zombie(100, 40, new Texture(Gdx.files.internal("zombie.png")), 1400, 500));
+	        masterController.addPlant(new SunFlower(500, 500, 1,1));
 	        
 	        Gdx.input.setInputProcessor(this);
 	        

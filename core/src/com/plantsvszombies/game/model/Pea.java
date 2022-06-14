@@ -14,7 +14,7 @@ public class Pea extends Entity {
 	private float damage = 35f;
 	
 	public Pea(float x, float y) {
-		super(new Texture(Gdx.files.internal("pea.png")), x, y, 35, 23);
+		super(new Texture(Gdx.files.internal("pea.png")), x, y, 25, 25);
 	}
 	
 	public float[] getVelocity() {

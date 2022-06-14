@@ -63,12 +63,15 @@ public class EntityController {
 		
 		for (Pea projectile : plantProjectiles) {
 			projectile.move(deltaTime);
+			if (projectile.getX() > 1250f) {
+				removedProjectiles.add(projectile);
+				continue;
+			}
 			for (Zombie zombie : zombies) {
 				if (projectile.overlaps(zombie)) {
 					System.out.println(zombie.isDead());
 					zombie.takeDamage(projectile.getDamage());
 					if (zombie.isDead()) {
-						totalEntities.remove(zombie);
 						removedZombies.add(zombie);
 					}
 					totalEntities.remove(projectile);
@@ -78,9 +81,11 @@ public class EntityController {
 		}
 		
 		for (Zombie removedZombie : removedZombies) {
+			totalEntities.remove(removedZombie);
 			zombies.remove(removedZombie);
 		}
 		for (Pea removedProjectile : removedProjectiles) {
+			totalEntities.remove(removedProjectile);
 			plantProjectiles.remove(removedProjectile);
 		}
 	}
@@ -118,5 +123,9 @@ public class EntityController {
 	public void addPlantProjectile(Pea projectile) {
 		plantProjectiles.add(projectile);
 		totalEntities.add(projectile);
+	}
+	
+	public void addEntity(Entity entity) {
+		totalEntities.add(entity);
 	}
 }

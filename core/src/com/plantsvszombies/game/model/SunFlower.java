@@ -7,6 +7,10 @@ import com.plantsvszombies.game.controller.ActionListener;
 
 public class SunFlower extends Plant {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long timeLastEnergy = TimeUtils.millis();
 	
 	public SunFlower(float x, float y, int i, int j) {
@@ -15,12 +19,12 @@ public class SunFlower extends Plant {
  	
 	public void act(ActionListener actionListener) {
 		if (TimeUtils.timeSinceMillis(timeLastEnergy) > 5000) {
-			generateEnergy(actionListener);
+			generateSun(actionListener);
 		}
 	}
 	
-	
-	public void generateEnergy(ActionListener actionListener) {
-		actionListener.notifyEnergyIncrement(50);
+	public void generateSun(ActionListener actionListener) {
+		Sun sun = new Sun(x,y);
+		actionListener.notifyNewEntity(sun);
 	}
 }

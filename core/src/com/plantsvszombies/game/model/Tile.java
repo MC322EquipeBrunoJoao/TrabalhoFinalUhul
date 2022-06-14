@@ -59,8 +59,8 @@ public class Tile {
 		
 		int tileX = getPositionTileX();
 		
-		double xCenterPixels = (tileX) * map.getProperties()
-											.get("tilewidth", Integer.class) - 10 ;
+		double xCenterPixels = (tileX-.4) * map.getProperties()
+											.get("tilewidth", Integer.class)  ;
 		
 		return (float)xCenterPixels;
 		
@@ -72,8 +72,7 @@ public class Tile {
 		int tileY = getPositionTileY();
 		
 		double yCenterPixels = (tileY) * map.getProperties()
-											.get("tileheight", Integer.class) + 20 ;
-		
+											.get("tileheight", Integer.class);
 		return (float)yCenterPixels;
 		
 		

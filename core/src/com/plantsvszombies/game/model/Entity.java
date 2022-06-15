@@ -13,27 +13,13 @@ public abstract class Entity extends Rectangle {
 	private static final long serialVersionUID = 1L;
 	private Texture texture;
 	
-	public Entity(Texture texture, float x, float y, int width, int height) {
-		super.setCenter(x, y);
-		super.width = width;
-		super.height = height;
+	public Entity(Texture texture, float xCenter, float yCenter, int width, int height) {
+		super(xCenter - width/2, yCenter - height/2, width, height);
 		this.texture = texture;
 	}
 	
 	public Texture getTexture() {
 		return texture;
-	}
-	
-	public float getRenderingX() {
-		Vector2 vector = new Vector2();
-		vector = getCenter(vector);
-		return vector.x - width/2;
-	}
-	
-	public float getRenderingY() {
-		Vector2 vector = new Vector2();
-		vector = getCenter(vector);
-		return vector.y - height/2;
 	}
 	
 }

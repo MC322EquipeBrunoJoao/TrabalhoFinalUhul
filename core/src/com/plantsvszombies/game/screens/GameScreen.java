@@ -50,8 +50,6 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
 	        camera = new OrthographicCamera(1000, 1000);
 	        
-	        masterController.addPlant(new SunFlower(500, 500, 1,1));
-	        
 	        Gdx.input.setInputProcessor(this);
 	        
 	    }
@@ -85,7 +83,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        for (Entity entity : masterController.getEntities()) {
 	        	Vector2 vetor = new Vector2();
 	        	entity.getCenter(vetor);
-	        	game.batch.draw(entity.getTexture(), entity.getRenderingX(), entity.getRenderingY(), entity.height, entity.width);
+	        	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY(), entity.getWidth(), entity.getHeight());
 	        }
 	        //entity.draw(game.batch);
 	        //controller.update()

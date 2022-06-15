@@ -14,8 +14,8 @@ public class PeaShooter extends Plant {
 	private static final long serialVersionUID = 1L;
 	private long lastShootTime = TimeUtils.millis();
 
-	public PeaShooter(float x, float y, int i, int j) {
-		super(100, new Texture(Gdx.files.internal("shooter.png")), x, y, i, j);
+	public PeaShooter(float xCenter, float yCenter, int i, int j) {
+		super(100, new Texture(Gdx.files.internal("shooter.png")), xCenter, yCenter, i, j);
 	}
 
 	public void act(ActionListener actionListener) {

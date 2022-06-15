@@ -20,8 +20,8 @@ public class Zombie extends Character {
 	private float damage;
 	private long timeLastAttack = TimeUtils.millis();
 
-	public Zombie(float health, float damage, Texture texture, float x, float y) {
-		super(health, texture, x, y, 100);
+	public Zombie(float health, float damage, Texture texture, float xCenter, float yCenter) {
+		super(health, texture, xCenter, yCenter, 100);
 		this.damage = damage;
 	}
 

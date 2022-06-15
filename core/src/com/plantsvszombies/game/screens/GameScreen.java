@@ -85,7 +85,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        for (Entity entity : masterController.getEntities()) {
 	        	Vector2 vetor = new Vector2();
 	        	entity.getCenter(vetor);
-	        	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY(), entity.height, entity.width);
+	        	game.batch.draw(entity.getTexture(), entity.getRenderingX(), entity.getRenderingY(), entity.height, entity.width);
 	        }
 	        //entity.draw(game.batch);
 	        //controller.update()

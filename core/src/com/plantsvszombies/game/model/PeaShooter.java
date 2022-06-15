@@ -28,6 +28,6 @@ public class PeaShooter extends Plant {
 	public Pea shoot() {
 		Vector2 vector = new Vector2();
 		this.getCenter(vector);
-		return new Pea(vector.x+50, vector.y+40);
+		return new Pea(vector.x + 20, vector.y + 10);
 	}
 }

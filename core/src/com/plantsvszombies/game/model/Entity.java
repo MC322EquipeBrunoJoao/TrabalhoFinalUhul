@@ -14,7 +14,7 @@ public abstract class Entity extends Rectangle {
 	private Texture texture;
 	
 	public Entity(Texture texture, float x, float y, int width, int height) {
-		super.setCenter(x - width/2, y);
+		super.setCenter(x, y);
 		super.width = width;
 		super.height = height;
 		this.texture = texture;
@@ -24,15 +24,16 @@ public abstract class Entity extends Rectangle {
 		return texture;
 	}
 	
-	public float getX() {
+	public float getRenderingX() {
 		Vector2 vector = new Vector2();
-		this.getCenter(vector);
-		return vector.x;
+		vector = getCenter(vector);
+		return vector.x - width/2;
 	}
 	
-	public float getY() {
+	public float getRenderingY() {
 		Vector2 vector = new Vector2();
-		this.getCenter(vector);
-		return vector.y;
+		vector = getCenter(vector);
+		return vector.y - height/2;
 	}
+	
 }

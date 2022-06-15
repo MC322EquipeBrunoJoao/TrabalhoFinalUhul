@@ -2,6 +2,7 @@ package com.plantsvszombies.game.controller;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Zombie;
@@ -12,6 +13,7 @@ public class MasterController {
 	private EntityController entityController = new EntityController(actionListener);
 	private InputController inputController = new InputController();
 	private MapController mapController = new MapController();
+	private TiledMap map;
 	private int energy = 0;
 	
 	public void control(float deltaTime) {
@@ -48,6 +50,13 @@ public class MasterController {
 	
 	public MapController getMapController() {
 		return mapController;
+		
+	}
+	public TiledMap createMap(String path) {
+		
+		this.map = mapController.createMap(path);
+		entityController.setMap(map);
+		return this.map;
 		
 	}
 	

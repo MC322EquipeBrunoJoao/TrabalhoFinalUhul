@@ -1,7 +1,12 @@
 package com.plantsvszombies.game.controller;
 
 import java.util.ArrayList;
+import java.util.Set;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Pea;
@@ -16,6 +21,7 @@ public class EntityController {
 	private ArrayList<Entity> totalEntities = new ArrayList<Entity>();
 	private ActionListener actionListener;
 	private long lastGeneration = TimeUtils.millis();
+	private TiledMap map;
 	
 	public EntityController(ActionListener actionListener) {
 		this.actionListener = actionListener;
@@ -92,7 +98,23 @@ public class EntityController {
 	
 	public void controlZombieGeneration() {
 		if (TimeUtils.timeSinceMillis(lastGeneration) > 3000) {
-			this.addZombie(Zombie.randomSpawn());
+			
+			int tileHeight = map.getProperties().get("tileheight", Integer.class);
+			int tileY = (MathUtils.random(0,500)/tileHeight);
+			//System.out.println("\n" + tileY + "\n");
+			
+			this.addZombie(
+					new Zombie(
+							
+							100,
+							35,
+							new Texture(Gdx.files.internal("zombie.png")),
+							1350,
+							(tileY)*tileHeight - tileHeight/2 + 15
+							
+					
+					));
+			
 			lastGeneration = TimeUtils.millis();
 		}
 	}
@@ -128,4 +150,9 @@ public class EntityController {
 	public void addEntity(Entity entity) {
 		totalEntities.add(entity);
 	}
+	public void setMap(TiledMap map) {
+		this.map = map;
+	}
+	
+	
 }

@@ -44,7 +44,8 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	    public void show() {
 	        //TmxMapLoader loader = new TmxMapLoader();
 	        //map = loader.load("mapa.tmx");
-			map = masterController.getMapController().createMap("mapa.tmx");
+			//map = masterController.getMapController().createMap("mapa.tmx");
+			map = masterController.createMap("mapa.tmx");
 			
 	        
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
@@ -79,6 +80,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        
 	        
 	        game.batch.begin();
+	        
 	        
 	        for (Entity entity : masterController.getEntities()) {
 	        	Vector2 vetor = new Vector2();

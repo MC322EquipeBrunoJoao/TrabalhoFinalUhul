@@ -17,7 +17,11 @@ public abstract class Entity extends Rectangle {
 		super(xCenter - width/2, yCenter - height/2, width, height);
 		this.texture = texture;
 	}
-	
+
+	public void setTexture(Texture texture) {
+		this.texture = texture;
+	}
+
 	public Texture getTexture() {
 		return texture;
 	}

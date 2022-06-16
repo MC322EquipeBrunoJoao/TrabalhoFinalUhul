@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="11" height="6" tilewidth="113" tileheight="117" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.8" tiledversion="1.8.5" orientation="orthogonal" renderorder="right-down" width="11" height="6" tilewidth="113" tileheight="117" infinite="0" nextlayerid="3" nextobjectid="1">
  <tileset firstgid="1" name="lawn new" tilewidth="113" tileheight="117" tilecount="72" columns="12">
   <image source="lawn new.png" width="1356" height="710"/>
  </tileset>
+ <tileset firstgid="73" name="SelectedShop" tilewidth="113" tileheight="117" tilecount="72" columns="12">
+  <image source="SelectedShop.png" width="1356" height="710"/>
+ </tileset>
+ <layer id="2" name="Camada de Tiles 2" width="11" height="6">
+  <data encoding="csv">
+0,0,0,0,77,78,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
  <layer id="1" name="Camada de Tiles 1" width="11" height="6">
   <data encoding="csv">
 1,2,3,4,5,6,7,8,9,10,12,

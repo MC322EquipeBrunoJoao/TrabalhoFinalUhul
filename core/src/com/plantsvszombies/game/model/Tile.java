@@ -7,8 +7,9 @@ public class Tile {
 	//private int xPixels, yPixels;
 	private int linha, coluna;
 	private TiledMap map;
-	private boolean isShop;
-	private boolean isOutOfBounds;
+	private boolean isShop = false;
+	private boolean isOutOfBounds = false;
+	private boolean isSelected = false;
 	private String plantType = "PeaShooter";
 
 	
@@ -23,12 +24,12 @@ public class Tile {
 		
 		
 		
-		isShop = false;
+
 		if(getPositionTileY() > 4 &&
 				(2 < getPositionTileX() && getPositionTileX() < 10)) 
 			isShop = true;
 		
-		isOutOfBounds = false;
+		
 		if(getPositionTileX() < 3)
 			isOutOfBounds = true;
 		
@@ -89,5 +90,18 @@ public class Tile {
 		
 		return map.getProperties().get("tileheight", Integer.class);
 		
+	}
+	
+	public boolean isSelected() {
+		return isSelected;
+	}
+	
+	public void Select() {
+		isSelected = true;
+		
+	}
+	
+	public void Unselect() {
+		isSelected = false;
 	}
 }

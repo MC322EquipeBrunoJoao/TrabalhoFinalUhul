@@ -1,5 +1,7 @@
 package com.plantsvszombies.game.screens;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
@@ -8,6 +10,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
@@ -132,6 +137,41 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 			
 			//Tile tile = new Tile(screenX, screenY, map);
 			Tile tile = masterController.getMapController().getTile(screenX, Gdx.graphics.getHeight() - screenY);
+			
+			TiledMapTileLayer standardLayer = (TiledMapTileLayer) map.getLayers().get("Camada de Tiles 1");
+			
+			ArrayList<Cell> shop = new ArrayList<Cell>();
+			
+			for(int i=0; i < 5; i++) {
+				
+				shop.add(standardLayer.getCell(4 + i, 5));
+				
+				
+			}
+			
+			//shop.add(standardLayer.getCell(4, 5));
+			//shop.add(standardLayer.getCell(5, 5));
+			
+			for(int i = 0; i < shop.size(); i++) {
+				
+				shop.get(i)
+				.setTile(map.getTileSets().getTileSet("lawn new").getTile(i + 5));
+				
+			}
+			
+			
+			
+			if(tile.isShop()){
+				Cell cell = standardLayer
+						.getCell(tile.getPositionTileX(), tile.getPositionTileY());
+				
+				if(!tile.isSelected() && tile.getPlantType() != "") 
+					cell.setTile(null);
+
+			}
+			
+			
+			
 			
 			Plant plant = masterController.getInputController().HandleEvent(tile);
 			

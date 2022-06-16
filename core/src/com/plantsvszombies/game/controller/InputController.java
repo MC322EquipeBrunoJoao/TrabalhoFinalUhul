@@ -73,6 +73,8 @@ public class InputController {
 			
 			
 		default:
+			isPlantSelected = false;
+			selectedPlantType = null;
 			return null;
 		
 		}

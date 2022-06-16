@@ -103,17 +103,22 @@ public class EntityController {
 			int tileY = (MathUtils.random(0,500)/tileHeight);
 			//System.out.println("\n" + tileY + "\n");
 			
-			this.addZombie(
-					new Zombie(
-							
-							100,
-							35,
-							new Texture(Gdx.files.internal("zombie.png")),
-							1350,
-							(tileY)*tileHeight - tileHeight/2 + 15
-							
-					
-					));
+			Zombie newZombie;
+			int n = MathUtils.random(1, 100);
+			System.out.println(n);
+			if (n <= 10) {
+				Texture zombieImage = new Texture(Gdx.files.internal("bucketzombie.png"));
+				newZombie = new Zombie(400, 35, zombieImage, 1350, (tileY)*tileHeight - tileHeight/2 + 15);
+			}
+			else if (n <= 30) {
+				Texture zombieImage = new Texture(Gdx.files.internal("conezombie.png"));
+				newZombie = new Zombie(200, 35, zombieImage, 1350, (tileY)*tileHeight - tileHeight/2 + 15);
+			}
+			else {
+				Texture zombieImage = new Texture(Gdx.files.internal("zombie.png"));
+				newZombie = new Zombie(100, 35, zombieImage, 1350, (tileY)*tileHeight - tileHeight/2 + 15);
+			}
+			this.addZombie(newZombie);
 			
 			lastGeneration = TimeUtils.millis();
 		}

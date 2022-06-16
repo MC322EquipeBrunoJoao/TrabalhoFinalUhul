@@ -24,12 +24,6 @@ public class Zombie extends Character {
 		super(health, texture, xCenter, yCenter, 100);
 		this.damage = damage;
 	}
-
-	public static Zombie randomSpawn() {
-		Texture zombieImage = new Texture(Gdx.files.internal("zombie.png"));
-		Zombie newZombie = new Zombie(100, 35, zombieImage, 1350, MathUtils.random(0, 500));
-	    return newZombie;
-	}
 	
 	public float[] getVelocity() {
 		return velocity;

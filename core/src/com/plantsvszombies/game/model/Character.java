@@ -13,13 +13,13 @@ public abstract class Character extends Entity {
 	private float health;
 	private boolean isDead = false;
 	
-	public Character(float health, Texture texture, float xCenter, float yCenter, int width) {
-		super(texture, xCenter, yCenter, width, width * texture.getHeight()/texture.getWidth());
+	public Character(float health, Texture texture, float xCenter, float yCenter, int height) {
+		super(texture, xCenter, yCenter, height * texture.getWidth()/texture.getHeight(), height);
 		this.health = health;
 	}
 	
 	public void takeDamage(float damageTaken) {
-		if (this.health - damageTaken <= 0) {
+		if (health - damageTaken <= 0) {
 			isDead = true;
 		}
 		else {
@@ -29,6 +29,10 @@ public abstract class Character extends Entity {
 	
 	public boolean isDead() {
 		return isDead;
+	}
+
+	public float getHealth() {
+		return health;
 	}
 	
  }

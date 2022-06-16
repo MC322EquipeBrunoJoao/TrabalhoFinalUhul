@@ -108,15 +108,15 @@ public class EntityController {
 			System.out.println(n);
 			if (n <= 10) {
 				Texture zombieImage = new Texture(Gdx.files.internal("bucketzombie.png"));
-				newZombie = new Zombie(400, 35, zombieImage, 1350, (tileY)*tileHeight - tileHeight/2 + 15);
+				newZombie = new Zombie(400, 35, zombieImage, 1350, (tileY + 1)*tileHeight );
 			}
 			else if (n <= 30) {
 				Texture zombieImage = new Texture(Gdx.files.internal("conezombie.png"));
-				newZombie = new Zombie(200, 35, zombieImage, 1350, (tileY)*tileHeight - tileHeight/2 + 15);
+				newZombie = new Zombie(200, 35, zombieImage, 1350, (tileY + 1)*tileHeight);
 			}
 			else {
 				Texture zombieImage = new Texture(Gdx.files.internal("zombie.png"));
-				newZombie = new Zombie(100, 35, zombieImage, 1350, (tileY)*tileHeight - tileHeight/2 + 15);
+				newZombie = new Zombie(100, 35, zombieImage, 1350, (tileY + 1)*tileHeight);
 			}
 			this.addZombie(newZombie);
 			

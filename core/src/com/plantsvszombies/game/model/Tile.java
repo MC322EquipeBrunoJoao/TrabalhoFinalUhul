@@ -10,6 +10,7 @@ public class Tile {
 	private boolean isShop = false;
 	private boolean isOutOfBounds = false;
 	private boolean isSelected = false;
+	private boolean isThereAPlant = false;
 	private String plantType = "PeaShooter";
 
 	
@@ -104,4 +105,16 @@ public class Tile {
 	public void Unselect() {
 		isSelected = false;
 	}
+	
+	public boolean IsThereAPlant() {
+		return isThereAPlant;		
+	}
+	
+	public void PlaceAPlant(String plantType) {
+		
+		isThereAPlant = true;
+		this.plantType = plantType;		
+	}
+	
 }
+

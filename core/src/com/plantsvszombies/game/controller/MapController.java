@@ -30,6 +30,7 @@ public class MapController {
 		}
 		matrizMapa[4][5] = new Tile(4, 5, map, "PeaShooter");
 		matrizMapa[5][5] = new Tile(5, 5, map, "Sunflower");
+		matrizMapa[6][5] = new Tile(6, 5, map, "WallNut");
 		
 		
 		return map;

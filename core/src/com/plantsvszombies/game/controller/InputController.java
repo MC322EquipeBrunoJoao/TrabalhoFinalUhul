@@ -5,6 +5,7 @@ import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.SunFlower;
 import com.plantsvszombies.game.model.Tile;
+import com.plantsvszombies.game.model.WallNut;
 
 public class InputController {
 	private boolean isPlantSelected = false;
@@ -19,6 +20,11 @@ public class InputController {
 		System.out.println(tile.getPositionTileX());
 		System.out.println(tile.getPositionTileY());
 		System.out.println(tile.isShop());
+		
+		if(tile.IsThereAPlant()) 
+			return null;
+			
+		
 		
 		if(!isPlantSelected && !tile.isShop()) {
 			return null;
@@ -43,6 +49,7 @@ public class InputController {
 		case "PeaShooter": 
 			isPlantSelected = false;
 			selectedPlantType = null;
+			tile.PlaceAPlant(selectedPlantType);
 			
 			return new PeaShooter(
 
@@ -57,17 +64,29 @@ public class InputController {
 		case "Sunflower":
 			isPlantSelected = false;
 			selectedPlantType = null;
+			tile.PlaceAPlant(selectedPlantType);
 			
 			return new SunFlower(
-					
-					
+							
 					tile.getX(),
 					tile.getY(),
 					tile.getPositionTileX(),
 					tile.getPositionTileX()
 					
+					);
+			
+			
+		case "WallNut":
+			isPlantSelected = false;
+			selectedPlantType = null;
+			tile.PlaceAPlant(selectedPlantType);
+			
+			return new WallNut(
 					
-					
+					tile.getX(),
+					tile.getY(),
+					tile.getPositionTileX(),
+					tile.getPositionTileX()		
 						
 					);
 			

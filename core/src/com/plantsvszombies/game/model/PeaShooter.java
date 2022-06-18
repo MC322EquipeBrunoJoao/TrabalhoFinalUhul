@@ -18,9 +18,9 @@ public class PeaShooter extends Plant {
 		super(100, new Texture(Gdx.files.internal("shooter.png")), xCenter, yCenter, i, j);
 	}
 
-	public void act(ActionListener actionListener) {
+	public void act() {
 		if (TimeUtils.timeSinceMillis(lastShootTime) > 2000) {
-			actionListener.notifyNewPlantProjectile(shoot());
+			ActionListener.getInstance().notifyNewPlantProjectile(shoot());
 			lastShootTime = TimeUtils.millis();
 		}
 	}
@@ -28,6 +28,6 @@ public class PeaShooter extends Plant {
 	public Pea shoot() {
 		Vector2 vector = new Vector2();
 		this.getCenter(vector);
-		return new Pea(vector.x + 20, vector.y + 10);
+		return new Pea(vector.x + 35, vector.y + 15);
 	}
 }

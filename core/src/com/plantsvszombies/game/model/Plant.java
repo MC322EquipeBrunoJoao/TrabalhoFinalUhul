@@ -18,6 +18,6 @@ public abstract class Plant extends Character{
 		this.coluna = coluna;
 	}
 	
-	public abstract void act(ActionListener actionListener);
+	public abstract void act();
 
 }

@@ -5,18 +5,20 @@ import com.plantsvszombies.game.model.Pea;
 
 public class ActionListener {
 	
-	private MasterController target;
+	private static final ActionListener actionListener = new ActionListener();
 	
-	public ActionListener(MasterController target) {
-		this.target = target;
-	}
+	private ActionListener() {};
 	
 	public void notifyNewPlantProjectile(Pea projectile) {
-		target.getEntityController().addPlantProjectile(projectile);
+		MasterController.getInstance().getEntityController().addPlantProjectile(projectile);
 	}
 	
 	public void notifyNewEntity(Entity entity) {
-		target.getEntityController().addEntity(entity);
+		MasterController.getInstance().getEntityController().addEntity(entity);
+	}
+	
+	public static ActionListener getInstance() {
+		return actionListener;
 	}
 	
 }

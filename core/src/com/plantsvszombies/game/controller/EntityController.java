@@ -23,10 +23,6 @@ public class EntityController {
 	private long lastGeneration = TimeUtils.millis();
 	private TiledMap map;
 	
-	public EntityController(ActionListener actionListener) {
-		this.actionListener = actionListener;
-	}
-	
 	private void controlZombiesAttacks(double deltaTime) {
 		
 		ArrayList<Plant> removedPlants = new ArrayList<Plant>();
@@ -34,23 +30,32 @@ public class EntityController {
 		for (Zombie zombie : zombies) {
 			zombie.move(deltaTime);
 			for (Plant plant : plants) {
-				if (zombie.overlaps(plant)) {
+				if (zombie.getHitBox().overlaps(plant)) {
 					if (zombie.isMoving()) {
-						System.out.println("is moving");
 						zombie.stop();
 					}
 					plant.takeDamage(zombie.attack());
 					if (plant.isDead()) {
-						System.out.println("will resume");
-						zombie.resumeMovement();
-						totalEntities.remove(plant);
 						removedPlants.add(plant);
 					}
 				}
 			}
 		}
 		
+		for (Zombie zombie : zombies) {
+			boolean overlaps = false;
+			for (Plant plant : plants) {
+				if (zombie.getHitBox().overlaps(plant) && !plant.isDead()) {
+					overlaps = true;
+				}
+			}
+			if (!overlaps) {
+				zombie.resumeMovement();
+			}		
+		}
+		
 		for (Plant removedPlant : removedPlants) {
+			totalEntities.remove(removedPlant);
 			plants.remove(removedPlant);
 		}
 		
@@ -58,7 +63,7 @@ public class EntityController {
 	
 	private void controlPlantsActions() {
 		for (Plant plant : plants) {
-			plant.act(actionListener);
+			plant.act();
 		}
 	}
 	
@@ -74,7 +79,7 @@ public class EntityController {
 				continue;
 			}
 			for (Zombie zombie : zombies) {
-				if (projectile.overlaps(zombie)) {
+				if (projectile.overlaps(zombie.getHitBox())) {
 					System.out.println(zombie.isDead());
 					zombie.takeDamage(projectile.getDamage());
 					if (zombie.isDead()) {
@@ -101,22 +106,21 @@ public class EntityController {
 			
 			int tileHeight = map.getProperties().get("tileheight", Integer.class);
 			int tileY = (MathUtils.random(0,500)/tileHeight);
-			//System.out.println("\n" + tileY + "\n");
 			
 			Zombie newZombie;
 			int n = MathUtils.random(1, 100);
 			System.out.println(n);
 			if (n <= 10) {
 				Texture zombieImage = new Texture(Gdx.files.internal("bucketzombie.png"));
-				newZombie = new Zombie(400, 35, zombieImage, 1350, (tileY + 1)*tileHeight );
+				newZombie = new Zombie(400, 35, zombieImage, 1350, (tileY + 1)*tileHeight - 35 );
 			}
 			else if (n <= 30) {
 				Texture zombieImage = new Texture(Gdx.files.internal("conezombie.png"));
-				newZombie = new Zombie(200, 35, zombieImage, 1350, (tileY + 1)*tileHeight);
+				newZombie = new Zombie(200, 35, zombieImage, 1350, (tileY + 1)*tileHeight - 35);
 			}
 			else {
 				Texture zombieImage = new Texture(Gdx.files.internal("zombie.png"));
-				newZombie = new Zombie(100, 35, zombieImage, 1350, (tileY + 1)*tileHeight);
+				newZombie = new Zombie(100, 35, zombieImage, 1350, (tileY + 1)*tileHeight - 35);
 			}
 			this.addZombie(newZombie);
 			

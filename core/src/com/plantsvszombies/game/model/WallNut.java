@@ -16,7 +16,7 @@ public class WallNut extends Plant {
 		super(400, new Texture(Gdx.files.internal("wallnut.png")), xCenter, yCenter, i, j);
 	}
 
-	public void act(ActionListener actionListener) {
+	public void act() {
 		if (this.getHealth() <= 300) {
 			this.setTexture(new Texture(Gdx.files.internal("wallnut2.png")));
 		}

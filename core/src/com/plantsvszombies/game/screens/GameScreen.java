@@ -38,12 +38,10 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	private TiledMap map;
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
-	private InputController inputController;
-	private MasterController masterController = new MasterController();
+	private MasterController masterController = MasterController.getInstance();
 	
 	public GameScreen(PlantsVsZombies game) {
 		this.game = game;
-		this.inputController = new InputController();
 	}
 
 		@Override
@@ -58,7 +56,6 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        camera = new OrthographicCamera(1000, 1000);
 	        
 	        Gdx.input.setInputProcessor(this);
-	        masterController.addPlant(new WallNut(400, 400,1,1));
 	        
 	    }
 		

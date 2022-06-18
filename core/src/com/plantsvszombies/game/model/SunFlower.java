@@ -19,18 +19,18 @@ public class SunFlower extends Plant {
 		super(100, new Texture(Gdx.files.internal("sunflower.png")), xCenter, yCenter, i, j);
 	}
  	
-	public void act(ActionListener actionListener) {
+	public void act() {
 		if (TimeUtils.timeSinceMillis(timeLastEnergy) > 5000) {
 			timeLastEnergy = TimeUtils.millis();
-			generateSun(actionListener);
+			generateSun();
 		}
 	}
 	
-	public void generateSun(ActionListener actionListener) {
+	public void generateSun() {
 		Vector2 vector = new Vector2();
 		vector = getCenter(vector);
 		double xIncrement =  MathUtils.random(-90,90);
 		double yIncrement = MathUtils.randomSign() * Math.sqrt(8100 - Math.pow(xIncrement, 2));
-		actionListener.notifyNewEntity(new Sun(vector.x + (float) xIncrement, vector.y + (float) yIncrement));
+		ActionListener.getInstance().notifyNewEntity(new Sun(vector.x + (float) xIncrement, vector.y + (float) yIncrement));
 	}
 }

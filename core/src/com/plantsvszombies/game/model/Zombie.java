@@ -15,8 +15,8 @@ public class Zombie extends Character {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private float[] previousVelocity = new float[2];
-	private float[] velocity = {-100, 0};
+	private float[] standartVelocity = {-100, 0};
+	private float[] velocity = {-100,0};
 	private float damage;
 	private long timeLastAttack = TimeUtils.millis();
 
@@ -54,18 +54,20 @@ public class Zombie extends Character {
 	}
 	
 	public void stop() {
-		previousVelocity[0] = velocity[0];
-		previousVelocity[1] = velocity[1];
 		velocity[0] = 0;
 		velocity[1] = 0;
 	}
 	
 	public void resumeMovement() {
-		velocity[0] = previousVelocity[0];
-		velocity[1] = previousVelocity[1];
+		velocity[0] = standartVelocity[0];
+		velocity[1] = standartVelocity[1];
 	}
 	
 	public float getX() {
 		return x - 30;
+	}
+	
+	public Rectangle getHitBox() {
+		return new Rectangle(x, y, width, height - 35);
 	}
  }

@@ -9,12 +9,18 @@ import com.plantsvszombies.game.model.Zombie;
 
 public class MasterController {
 	
-	private ActionListener actionListener = new ActionListener(this);
-	private EntityController entityController = new EntityController(actionListener);
+	private static final MasterController masterController = new MasterController();
+	private EntityController entityController = new EntityController();
 	private InputController inputController = new InputController();
 	private MapController mapController = new MapController();
 	private TiledMap map;
 	private int energy = 0;
+	
+	private MasterController() {};
+	
+	public static MasterController getInstance() {
+		return masterController;
+	}
 	
 	public void control(float deltaTime) {
 		entityController.controlEntities(deltaTime);
@@ -52,6 +58,7 @@ public class MasterController {
 		return mapController;
 		
 	}
+	
 	public TiledMap createMap(String path) {
 		
 		this.map = mapController.createMap(path);

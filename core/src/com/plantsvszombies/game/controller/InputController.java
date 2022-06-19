@@ -39,10 +39,17 @@ public class InputController {
 			
 		}
 		
-		if(tile.isOutOfBounds() || tile.isShop()) {
+		if(tile.isOutOfBounds()) {
 			return null;
 		}
 		
+		if(tile.isShop()) {
+			
+			isPlantSelected = true;
+			selectedPlantType = tile.getPlantType();
+			return null;
+			
+		}
 		
 		switch(selectedPlantType) {
 		

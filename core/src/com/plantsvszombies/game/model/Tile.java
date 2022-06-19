@@ -1,6 +1,5 @@
 package com.plantsvszombies.game.model;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 public class Tile {

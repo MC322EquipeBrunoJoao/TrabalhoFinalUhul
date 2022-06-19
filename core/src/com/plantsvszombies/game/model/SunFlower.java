@@ -15,8 +15,8 @@ public class SunFlower extends Plant {
 	private static final long serialVersionUID = 1L;
 	private long timeLastEnergy = TimeUtils.millis();
 	
-	public SunFlower(float xCenter, float yCenter, int i, int j) {
-		super(100, new Texture(Gdx.files.internal("sunflower.png")), xCenter, yCenter, i, j);
+	public SunFlower(float xCenter, float yCenter) {
+		super(100, new Texture(Gdx.files.internal("sunflower.png")), xCenter, yCenter);
 	}
  	
 	public void act() {

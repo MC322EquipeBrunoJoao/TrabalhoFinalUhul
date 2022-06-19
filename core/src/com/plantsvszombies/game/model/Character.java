@@ -1,8 +1,6 @@
 package com.plantsvszombies.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.math.Polygon;
 
 public abstract class Character extends Entity {
 	

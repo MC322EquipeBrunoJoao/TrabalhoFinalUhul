@@ -10,9 +10,6 @@ import com.plantsvszombies.game.model.Zombie;
 public class MasterController {
 	
 	private static final MasterController masterController = new MasterController();
-	private EntityController entityController = new EntityController();
-	private InputController inputController = new InputController();
-	private MapController mapController = new MapController();
 	private TiledMap map;
 	private int energy = 0;
 	
@@ -23,15 +20,11 @@ public class MasterController {
 	}
 	
 	public void control(float deltaTime) {
-		entityController.controlEntities(deltaTime);
+		EntityController.getInstance().controlEntities(deltaTime);
 	}
 	
 	public void incrementEnergy(int increment) {
 		energy += increment;
-	}
-	
-	public EntityController getEntityController() {
-		return entityController;
 	}
 	
 	public int getEnergy() {
@@ -39,30 +32,30 @@ public class MasterController {
 	}
 	
 	public void addPlant(Plant plant) {
-		entityController.addPlant(plant);
+		EntityController.getInstance().addPlant(plant);
 	}
 	
 	public void addZombie(Zombie zombie) {
-		entityController.addZombie(zombie);
+		EntityController.getInstance().addZombie(zombie);
 	}
 	
 	public ArrayList<Entity> getEntities() {
-		return entityController.getEntities();
+		return EntityController.getInstance().getEntities();
 	}
 	
 	public InputController getInputController() {
-		return inputController;
+		return InputController.getInstance();
 	}
 	
 	public MapController getMapController() {
-		return mapController;
+		return MapController.getInstance();
 		
 	}
 	
 	public TiledMap createMap(String path) {
 		
-		this.map = mapController.createMap(path);
-		entityController.setMap(map);
+		this.map = MapController.getInstance().createMap(path);
+		EntityController.getInstance().setMap(map);
 		return this.map;
 		
 	}

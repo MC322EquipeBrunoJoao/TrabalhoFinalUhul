@@ -5,14 +5,15 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.plantsvszombies.game.model.Tile;
 
 public class MapController {
+	
+	private static final MapController mapController = new MapController();
 	TiledMap map;
 	Tile[][] matrizMapa = new Tile[12][7];
-	
 
-	public MapController() {
-		
-		
-		
+	private MapController() {};
+	
+	protected static MapController getInstance() {
+		return mapController;
 	}
 	
 	public TiledMap createMap(String path) {

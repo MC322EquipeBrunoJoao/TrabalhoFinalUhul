@@ -1,7 +1,6 @@
 package com.plantsvszombies.game.controller;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -9,19 +8,25 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.plantsvszombies.game.model.Entity;
-import com.plantsvszombies.game.model.Pea;
 import com.plantsvszombies.game.model.Plant;
+import com.plantsvszombies.game.model.Projectile;
 import com.plantsvszombies.game.model.Zombie;
 
 public class EntityController {
-
+	
+	private static final EntityController entityController = new EntityController();
 	private ArrayList<Plant> plants = new ArrayList<Plant>();
 	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
-	private ArrayList<Pea> plantProjectiles = new ArrayList<Pea>();
+	private ArrayList<Projectile> plantProjectiles = new ArrayList<Projectile>();
 	private ArrayList<Entity> totalEntities = new ArrayList<Entity>();
-	private ActionListener actionListener;
 	private long lastGeneration = TimeUtils.millis();
 	private TiledMap map;
+	
+	private EntityController() {};
+	
+	protected static EntityController getInstance() {
+		return entityController;
+	}
 	
 	private void controlZombiesAttacks(double deltaTime) {
 		
@@ -70,9 +75,9 @@ public class EntityController {
 	private void controlProjectiles(double deltaTime) {
 		
 		ArrayList<Zombie> removedZombies = new ArrayList<Zombie>();
-		ArrayList<Pea> removedProjectiles = new ArrayList<Pea>();
+		ArrayList<Projectile> removedProjectiles = new ArrayList<Projectile>();
 		
-		for (Pea projectile : plantProjectiles) {
+		for (Projectile projectile : plantProjectiles) {
 			projectile.move(deltaTime);
 			if (projectile.getX() > 1250f) {
 				removedProjectiles.add(projectile);
@@ -95,7 +100,7 @@ public class EntityController {
 			totalEntities.remove(removedZombie);
 			zombies.remove(removedZombie);
 		}
-		for (Pea removedProjectile : removedProjectiles) {
+		for (Projectile removedProjectile : removedProjectiles) {
 			totalEntities.remove(removedProjectile);
 			plantProjectiles.remove(removedProjectile);
 		}
@@ -151,7 +156,7 @@ public class EntityController {
 		totalEntities.add(zombie);
 	}
 	
-	public void addPlantProjectile(Pea projectile) {
+	public void addPlantProjectile(Projectile projectile) {
 		plantProjectiles.add(projectile);
 		totalEntities.add(projectile);
 	}

@@ -1,10 +1,8 @@
 package com.plantsvszombies.game.model;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.math.Vector2;
 
-public class Pea extends Entity {
+public class Projectile extends Entity {
 	
 	/**
 	 * 
@@ -13,8 +11,8 @@ public class Pea extends Entity {
 	private float[] velocity = {100f, 0f};
 	private float damage = 35f;
 	
-	public Pea(float xCenter, float yCenter) {
-		super(new Texture(Gdx.files.internal("pea.png")), xCenter, yCenter, 25, 25);
+	public Projectile(Texture texture, float xCenter, float yCenter, int width, int height) {
+		super(texture, xCenter, yCenter, width, height);
 	}
 	
 	public float[] getVelocity() {

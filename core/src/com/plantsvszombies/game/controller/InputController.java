@@ -1,6 +1,5 @@
 package com.plantsvszombies.game.controller;
 
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.SunFlower;
@@ -8,11 +7,15 @@ import com.plantsvszombies.game.model.Tile;
 import com.plantsvszombies.game.model.WallNut;
 
 public class InputController {
+	
+	private static final InputController inputController = new InputController();
 	private boolean isPlantSelected = false;
 	private String selectedPlantType = null;
 
-	public InputController() {
-		// TODO Auto-generated constructor stub
+	private InputController() {};
+	
+	protected static InputController getInstance() {
+		return inputController;
 	}
 
 	public Plant HandleEvent(Tile tile) {
@@ -61,9 +64,7 @@ public class InputController {
 			return new PeaShooter(
 
 				tile.getX(),
-				tile.getY(),
-				tile.getPositionTileX(),
-				tile.getPositionTileY()
+				tile.getY()
 				
 				);
 			
@@ -76,9 +77,7 @@ public class InputController {
 			return new SunFlower(
 							
 					tile.getX(),
-					tile.getY(),
-					tile.getPositionTileX(),
-					tile.getPositionTileX()
+					tile.getY()
 					
 					);
 			
@@ -91,9 +90,7 @@ public class InputController {
 			return new WallNut(
 					
 					tile.getX(),
-					tile.getY(),
-					tile.getPositionTileX(),
-					tile.getPositionTileX()		
+					tile.getY()	
 						
 					);
 			

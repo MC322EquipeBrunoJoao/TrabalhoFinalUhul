@@ -14,8 +14,8 @@ public class PeaShooter extends Plant {
 	private static final long serialVersionUID = 1L;
 	private long lastShootTime = TimeUtils.millis();
 
-	public PeaShooter(float xCenter, float yCenter, int i, int j) {
-		super(100, new Texture(Gdx.files.internal("shooter.png")), xCenter, yCenter, i, j);
+	public PeaShooter(float xCenter, float yCenter) {
+		super(100, new Texture(Gdx.files.internal("shooter.png")), xCenter, yCenter);
 	}
 
 	public void act() {
@@ -25,9 +25,9 @@ public class PeaShooter extends Plant {
 		}
 	}
 	
-	public Pea shoot() {
+	public Projectile shoot() {
 		Vector2 vector = new Vector2();
 		this.getCenter(vector);
-		return new Pea(vector.x + 35, vector.y + 15);
+		return new Projectile(new Texture(Gdx.files.internal("pea.png")), vector.x + 35, vector.y + 15, 25, 25);
 	}
 }

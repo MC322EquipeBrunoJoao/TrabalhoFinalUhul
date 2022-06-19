@@ -1,7 +1,6 @@
 package com.plantsvszombies.game.model;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.plantsvszombies.game.controller.ActionListener;
 
 public abstract class Plant extends Character{
 	
@@ -9,15 +8,11 @@ public abstract class Plant extends Character{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int linha;
-	private int coluna;
-	
-	public Plant(float health, Texture texture, float x, float y, int linha, int coluna) {
+
+	public Plant(float health, Texture texture, float x, float y) {
 		super(health, texture, x, y, 80);
-		this.linha = linha;
-		this.coluna = coluna;
 	}
 	
 	public abstract void act();
-
+	
 }

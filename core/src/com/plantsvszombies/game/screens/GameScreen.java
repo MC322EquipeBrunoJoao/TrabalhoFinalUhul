@@ -7,30 +7,16 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.TimeUtils;
 import com.plantsvszombies.game.PlantsVsZombies;
-import com.plantsvszombies.game.controller.EntityController;
-import com.plantsvszombies.game.controller.InputController;
 import com.plantsvszombies.game.controller.MasterController;
 import com.plantsvszombies.game.model.Entity;
-import com.plantsvszombies.game.model.Pea;
-import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
-import com.plantsvszombies.game.model.SunFlower;
 import com.plantsvszombies.game.model.Tile;
-import com.plantsvszombies.game.model.WallNut;
-import com.plantsvszombies.game.model.Zombie;
 
 public class GameScreen extends ScreenAdapter implements InputProcessor{
 	

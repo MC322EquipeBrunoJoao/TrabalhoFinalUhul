@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -25,6 +26,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
 	private MasterController masterController = MasterController.getInstance();
+	private Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("backgroundMusic.mp3"));
 	
 	public GameScreen(PlantsVsZombies game) {
 		this.game = game;
@@ -35,6 +37,9 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        //TmxMapLoader loader = new TmxMapLoader();
 	        //map = loader.load("mapa.tmx");
 			//map = masterController.getMapController().createMap("mapa.tmx");
+			backgroundMusic.setLooping(true);
+			backgroundMusic.play();
+			backgroundMusic.setVolume(0.5f);
 			map = masterController.createMap("mapa.tmx");
 			
 	        

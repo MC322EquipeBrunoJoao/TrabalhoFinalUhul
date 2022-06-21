@@ -1,6 +1,7 @@
 package com.plantsvszombies.game.model;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -13,6 +14,7 @@ public class PeaShooter extends Plant {
 	 */
 	private static final long serialVersionUID = 1L;
 	private long lastShootTime = TimeUtils.millis();
+	private Sound shootSound = Gdx.audio.newSound(Gdx.files.internal("peashooterShoot.mp3"));
 
 	public PeaShooter(float xCenter, float yCenter) {
 		super(100, new Texture(Gdx.files.internal("shooter.png")), xCenter, yCenter);
@@ -26,6 +28,7 @@ public class PeaShooter extends Plant {
 	}
 	
 	public Projectile shoot() {
+		shootSound.play(1f);
 		Vector2 vector = new Vector2();
 		this.getCenter(vector);
 		return new Projectile(new Texture(Gdx.files.internal("pea.png")), vector.x + 35, vector.y + 15, 25, 25);

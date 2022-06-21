@@ -1,5 +1,7 @@
 package com.plantsvszombies.game.model;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -15,6 +17,7 @@ public class Zombie extends Character {
 	private float[] velocity = {-100,0};
 	private float damage;
 	private long timeLastAttack = TimeUtils.millis();
+	private Sound biteSound = Gdx.audio.newSound(Gdx.files.internal("ZombieBite.ogg"));
 
 	public Zombie(float health, float damage, Texture texture, float xCenter, float yCenter) {
 		super(health, texture, xCenter, yCenter, 150);
@@ -31,6 +34,7 @@ public class Zombie extends Character {
 	
 	public float attack() {
 		if (TimeUtils.timeSinceMillis(timeLastAttack) > 3000) {
+			biteSound.play(0.7f);
 			timeLastAttack = TimeUtils.millis();
 			return damage;
 		}

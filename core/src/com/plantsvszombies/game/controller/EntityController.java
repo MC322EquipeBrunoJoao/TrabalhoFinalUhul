@@ -3,6 +3,7 @@ package com.plantsvszombies.game.controller;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.MathUtils;
@@ -18,6 +19,7 @@ public class EntityController {
 	private ArrayList<Plant> plants = new ArrayList<Plant>();
 	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
 	private ArrayList<Projectile> plantProjectiles = new ArrayList<Projectile>();
+	private Sound peaHit = Gdx.audio.newSound(Gdx.files.internal("peaHit.mp3"));
 	private ArrayList<Entity> totalEntities = new ArrayList<Entity>();
 	private long lastGeneration = TimeUtils.millis();
 	private TiledMap map;
@@ -85,7 +87,7 @@ public class EntityController {
 			}
 			for (Zombie zombie : zombies) {
 				if (projectile.overlaps(zombie.getHitBox())) {
-					System.out.println(zombie.isDead());
+					peaHit.play();
 					zombie.takeDamage(projectile.getDamage());
 					if (zombie.isDead()) {
 						removedZombies.add(zombie);

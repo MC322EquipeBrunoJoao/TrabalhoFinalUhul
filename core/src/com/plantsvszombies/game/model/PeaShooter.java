@@ -22,7 +22,7 @@ public class PeaShooter extends Plant {
 	}
 
 	public void act() {
-		if (TimeUtils.timeSinceMillis(lastShootTime) > 2000) {
+		if (TimeUtils.timeSinceMillis(lastShootTime) > 3000) {
 			ActionListener.getInstance().notifyNewPlantProjectile(shoot());
 			lastShootTime = TimeUtils.millis();
 		}

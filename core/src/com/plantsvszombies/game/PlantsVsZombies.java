@@ -25,7 +25,7 @@ public class PlantsVsZombies extends Game {
 		gameOverScreen = new GameOverScreen(this);
 		startScreen = new StartScreen(this);
 		
-		setScreen(gameScreen);
+		setScreen(startScreen);
 	}
 
 	@Override

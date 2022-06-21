@@ -1,7 +1,9 @@
 package com.plantsvszombies.game.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.plantsvszombies.game.PlantsVsZombies;
 
 public class GameOverScreen extends ScreenAdapter implements InputProcessor{
@@ -11,6 +13,18 @@ public class GameOverScreen extends ScreenAdapter implements InputProcessor{
 	public GameOverScreen(PlantsVsZombies game) {
 		this.game = game;
 	}
+	
+	@Override
+    public void show() {
+        Gdx.input.setInputProcessor(this);
+	}
+    
+    @Override
+    public void render(float delta) {
+    	
+        Gdx.gl.glClearColor(0, 0, .25f, 1);
+    	
+    }
 	
 	@Override
 	public boolean keyDown(int keycode) {

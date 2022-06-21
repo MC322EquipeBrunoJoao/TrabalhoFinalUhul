@@ -30,21 +30,24 @@ public class EntityController {
 		return entityController;
 	}
 	
-	//private void gameOver() {
-	//	MasterController.getInstance().gameOver();
-	//}
+	private void gameOver() {
+		for (int i=0; i < totalEntities.size(); i++) {
+			totalEntities.remove(i);
+		}
+		MasterController.getInstance().gameOver();
+	}
 	
 	private void controlZombies(double deltaTime) {
 		
 		ArrayList<Plant> removedPlants = new ArrayList<Plant>();
 		ArrayList<Zombie> removedZombies = new ArrayList<Zombie>();
+		boolean gameOver = false;
 		
 		for (Zombie zombie : zombies) {
 			zombie.move(deltaTime);
 			if (zombie.getX() < 200) {
 				removedZombies.add(zombie);
-				//gameOver();
-				continue;
+				gameOver = true;
 			}
 			for (Plant plant : plants) {
 				if (zombie.getHitBox().overlaps(plant)) {
@@ -79,6 +82,10 @@ public class EntityController {
 		for (Zombie removedZombie : removedZombies) {
 			totalEntities.remove(removedZombie);
 			zombies.remove(removedZombie);
+		}
+		
+		if (gameOver) {
+			gameOver();
 		}
 		
 	}

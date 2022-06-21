@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Zombie;
@@ -13,7 +14,7 @@ public class MasterController {
 	private static final MasterController masterController = new MasterController();
 	private TiledMap map;
 	private int energy = 0;
-	private Game game;
+	private PlantsVsZombies game;
 	
 	private MasterController() {};
 	
@@ -21,13 +22,14 @@ public class MasterController {
 		return masterController;
 	}
 	
-	public void setGame(Game game) {
+	public void setGame(PlantsVsZombies game) {
 		this.game = game;
 	}
 	
-	//public void gameOver() {
-	//	game.setScreen(game.);
-	//}
+	public void gameOver() {
+		game.setScreen(game.getGameOverScreen());
+		
+	}
 	
 	public void control(float deltaTime) {
 		EntityController.getInstance().controlEntities(deltaTime);

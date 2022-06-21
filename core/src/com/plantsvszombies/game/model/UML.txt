@@ -1,23 +1,6 @@
-MODEL:
-
-- Classe Rectangle: x, y, método overlap, width, height
-	- Classe abstrata Entity: Texture
-		- Classe abstrata Character: health, isDead, takeDamage
-			- Classe Zombie: método static randomSpawn
-			- Classe abstrata Plant: linha tilemap, coluna tilemap
-				- PeaShooter
-				- SunFlower
-				- WallNut
-				- Chomper
-		- Interface entidade dinâmica: velocidade	
-			- Classe Projétil: dano
-			- Classe Zumbi: vida, método levarDano, método static Spawnar
-		- Interface actor: (realizam ações periodicamente. No codigo seria implementada por sunflower e peashooter)
-
-CONTROLLER:
-
-Em cada frame do jogo, controller chama act para os atores e move para as entidades dinamicas
-
-Controller pode possuir um vetor de entidades dinâmicas que atualiza a posição
-com base na velocidade, iterando sobre cada objeto do vetor. O mesmo para actors.
-
+- Fazer telas de início e game over
+- Controlar energia da loja
+- Implementar exceptions
+- Buscar melhorias em qualidade de código / design patterns
+- Se der tempo, implementar mais plantas e zumbis para aumentar complexidade
+- Se der tempo, implementar animações

@@ -11,7 +11,7 @@ public abstract class Character extends Entity {
 	private float health;
 	private boolean isDead = false;
 	
-	public Character(float health, Texture texture, float xCenter, float yCenter, int height) {
+	public Character(float health, Texture texture, float xCenter, float yCenter, int height) throws NumberFormatException {
 		super(texture, xCenter, yCenter, height * texture.getWidth()/texture.getHeight(), height);
 		this.health = health;
 	}

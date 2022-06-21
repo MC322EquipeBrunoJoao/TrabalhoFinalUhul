@@ -41,13 +41,11 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 			backgroundMusic.play();
 			backgroundMusic.setVolume(0.5f);
 			map = masterController.createMap("mapa.tmx");
-			
 	        
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
 	        camera = new OrthographicCamera(1000, 1000);
 	        
 	        Gdx.input.setInputProcessor(this);
-	        
 	    }
 		
 

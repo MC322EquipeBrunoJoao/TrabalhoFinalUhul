@@ -10,11 +10,17 @@ public abstract class Plant extends Character{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Sound plantSound = Gdx.audio.newSound(Gdx.files.internal("plantingSound.mp3"));
+	private Sound plantSound;
 
 	public Plant(float health, Texture texture, float x, float y) {
 		super(health, texture, x, y, 80);
-		plantSound.play();
+		try {
+			plantSound = Gdx.audio.newSound(Gdx.files.internal("plantingSound.mp3"));
+			plantSound.play();
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 	
 	public abstract void act();

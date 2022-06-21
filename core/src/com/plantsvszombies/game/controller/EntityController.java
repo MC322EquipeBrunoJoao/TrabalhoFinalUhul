@@ -30,6 +30,10 @@ public class EntityController {
 		return entityController;
 	}
 	
+	//private void gameOver() {
+	//	MasterController.getInstance().gameOver();
+	//}
+	
 	private void controlZombies(double deltaTime) {
 		
 		ArrayList<Plant> removedPlants = new ArrayList<Plant>();
@@ -39,7 +43,7 @@ public class EntityController {
 			zombie.move(deltaTime);
 			if (zombie.getX() < 200) {
 				removedZombies.add(zombie);
-				//inserimos o game over aqui
+				//gameOver();
 				continue;
 			}
 			for (Plant plant : plants) {

@@ -16,7 +16,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.controller.MasterController;
 import com.plantsvszombies.game.model.Entity;
+import com.plantsvszombies.game.model.ITile;
 import com.plantsvszombies.game.model.Plant;
+import com.plantsvszombies.game.model.ShopTile;
 import com.plantsvszombies.game.model.Tile;
 
 public class GameScreen extends ScreenAdapter implements InputProcessor{
@@ -124,7 +126,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 			//lembra de depois adicionar um mapController
 			
 			//Tile tile = new Tile(screenX, screenY, map);
-			Tile tile = masterController.getMapController().getTile(screenX, Gdx.graphics.getHeight() - screenY);
+			ITile tile = masterController.getMapController().getTile(screenX, Gdx.graphics.getHeight() - screenY);
 			
 			TiledMapTileLayer standardLayer = (TiledMapTileLayer) map.getLayers().get("Camada de Tiles 1");
 			
@@ -149,7 +151,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 			
 			
 			
-			if(tile.isShop()){
+			if(tile instanceof ShopTile){
 				Cell cell = standardLayer
 						.getCell(tile.getPositionTileX(), tile.getPositionTileY());
 				

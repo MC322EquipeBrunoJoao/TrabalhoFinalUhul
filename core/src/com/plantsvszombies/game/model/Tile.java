@@ -2,32 +2,32 @@ package com.plantsvszombies.game.model;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
-public class Tile {
+public class Tile implements ITile{
 	//private int xPixels, yPixels;
 	private int linha, coluna;
 	private TiledMap map;
-	private boolean isShop = false;
+	//private boolean isShop = false;
 	private boolean isOutOfBounds = false;
-	private boolean isSelected = false;
-	private boolean isThereAPlant = false;
-	private String plantType = "PeaShooter";
+	//private boolean isThereAPlant = false;
+	private Plant plant;
+	
+	
 
 	
-	public Tile(int coluna, int linha, TiledMap map, String plantType) {
+	public Tile(int coluna, int linha, TiledMap map) {
 		//this.xPixels = xPixels;
 		//this.yPixels = Gdx.graphics.getHeight() - reversedYPixels;
 		this.map = map;
 		this.linha = linha;
 		this.coluna = coluna;
 		
-		this.plantType = plantType;
 		
 		
 		
 
-		if(getPositionTileY() > 4 &&
-				(2 < getPositionTileX() && getPositionTileX() < 10)) 
-			isShop = true;
+		//if(getPositionTileY() > 4 &&
+		//		(2 < getPositionTileX() && getPositionTileX() < 10)) 
+		//	isShop = true;
 		
 		
 		if(getPositionTileX() < 3)
@@ -48,9 +48,9 @@ public class Tile {
 		
 	}
 	
-	public boolean isShop() {
-		return isShop;
-	}
+	//public boolean isShop() {
+	//	return isShop;
+	//}
 	
 	public boolean isOutOfBounds() {
 		return isOutOfBounds;
@@ -76,10 +76,7 @@ public class Tile {
 		
 		
 	}
-	
-	public String getPlantType() {
-		return plantType;
-	}
+
 	
 	public int getWidth() {
 		
@@ -92,27 +89,46 @@ public class Tile {
 		
 	}
 	
-	public boolean isSelected() {
-		return isSelected;
-	}
-	
-	public void Select() {
-		isSelected = true;
-		
-	}
-	
-	public void Unselect() {
-		isSelected = false;
-	}
 	
 	public boolean IsThereAPlant() {
-		return isThereAPlant;		
+		if(plant == null || plant.isDead())
+			return false;
+		
+		return true;
 	}
 	
-	public void PlaceAPlant(String plantType) {
+	public boolean PlaceAPlant(Plant plant) {
 		
-		isThereAPlant = true;
-		this.plantType = plantType;		
+		this.plant = plant;
+		return true;
+	}
+	
+	public Plant getPlant() {
+		return this.plant;
+	}
+
+	@Override
+	public String getPlantType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void PlaceAPlant(String selectedPlantType) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean isSelected() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	
+	public void setPlant(Plant plant) {
+		
+		this.plant = plant;
+		
 	}
 	
 }

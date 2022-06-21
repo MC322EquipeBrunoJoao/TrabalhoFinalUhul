@@ -1,7 +1,9 @@
 package com.plantsvszombies.game.controller;
 
+import com.plantsvszombies.game.model.ITile;
 import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
+import com.plantsvszombies.game.model.ShopTile;
 import com.plantsvszombies.game.model.SunFlower;
 import com.plantsvszombies.game.model.Tile;
 import com.plantsvszombies.game.model.WallNut;
@@ -17,19 +19,116 @@ public class InputController {
 	protected static InputController getInstance() {
 		return inputController;
 	}
+	
+	private Plant selectPlant(ITile tile) {
+		
+		if(tile.getPositionTileY() != 5)
+			return null;
+		
+		
+		else {
+			
+			isPlantSelected = true;
+			selectedPlantType = tile.getPlantType();
+			return null;
+			
+		}
+		
+	}
+	
+	private Plant createPlant(ITile tile) {
+		Plant plant = null;
+		
+		if(tile.getPositionTileY() != 5) {
+			
+			switch(selectedPlantType) {
+			
+			case "PeaShooter": 
+				plant = new PeaShooter(tile.getX(), tile.getY());
+				break;
 
-	public Plant HandleEvent(Tile tile) {
+								
+			case "Sunflower":		
+				plant = new SunFlower(tile.getX(), tile.getY());
+				break;
+				
+								
+			case "WallNut":
+				plant = new WallNut(tile.getX(), tile.getY());
+				break;
+				
+								
+			default:
+				break;
+			
+			}			
+
+			tile.setPlant(plant);
+			isPlantSelected = false;
+			selectedPlantType = null;
+			return plant;
+			
+			
+			
+			
+		}
+		
+		else {
+			
+			selectedPlantType = tile.getPlantType();
+			return null;
+				
+		}
+		
+		
+		
+	}
+
+	public Plant HandleEvent(ITile tile) {
 		
 		System.out.println(tile.getPositionTileX());
 		System.out.println(tile.getPositionTileY());
-		System.out.println(tile.isShop());
+		System.out.println(tile instanceof ShopTile);
 		
-		if(tile.IsThereAPlant()) 
+		
+		
+		if(tile.isOutOfBounds()) 
+			return null;
+		
+		if(tile.IsThereAPlant())
+			return null;
+		
+		
+		if(!isPlantSelected) 
+			return selectPlant(tile);
+			
+		
+		else {
+			
+			try{
+				
+				return createPlant(tile);		
+			}
+			
+			catch(NullPointerException e) {
+				
+				System.out.println("Planta inválida!");
+				
+				return null;
+				
+			}
+			
+			
+		}
+		
+				
+
+		/*if(tile.IsThereAPlant()) 
 			return null;
 			
 		
 		
-		if(!isPlantSelected && !tile.isShop()) {
+		if(!isPlantSelected && !(tile instanceof ShopTile)) {
 			return null;
 		}
 		
@@ -100,7 +199,7 @@ public class InputController {
 			selectedPlantType = null;
 			return null;
 		
-		}
+		}*/
 		
 	
 	}

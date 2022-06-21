@@ -58,26 +58,29 @@ public class ShopTile implements ITile {
 		return false;
 	}
 
-
 	@Override
 	public float getX() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	@Override
-	public float getY() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-
-	@Override
-	public void PlaceAPlant(String selectedPlantType) {
-
+		
+		
+		double xCenterPixels = (coluna + .5) * map.getProperties()
+											.get("tilewidth", Integer.class)  ;
+		
+		return (float)xCenterPixels;
+		
 		
 	}
+	@Override
+	public float getY() {
+		
+		
+		double yCenterPixels = (5 + .5) * map.getProperties()
+											.get("tileheight", Integer.class);
+		return (float)yCenterPixels;
+		
+		
+	}
+
+
 	public void setPlant(Plant plant) {
 
 	}

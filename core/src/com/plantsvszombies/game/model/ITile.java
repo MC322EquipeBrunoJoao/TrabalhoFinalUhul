@@ -7,17 +7,15 @@ public interface ITile {
 	int getPositionTileY();
 
 	boolean IsThereAPlant();
-
-	String getPlantType();
-
+	
 	boolean isOutOfBounds();
-
+	
 	float getX();
 
 	float getY();
 
-	void PlaceAPlant(String selectedPlantType);
-	
+	String getPlantType();	
+
 	boolean isSelected();
 	
 	void setPlant(Plant plant);

@@ -114,12 +114,6 @@ public class Tile implements ITile{
 	}
 
 	@Override
-	public void PlaceAPlant(String selectedPlantType) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public boolean isSelected() {
 		// TODO Auto-generated method stub
 		return false;

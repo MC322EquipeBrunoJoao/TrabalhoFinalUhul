@@ -6,18 +6,19 @@ public interface ITile {
 
 	int getPositionTileY();
 
-	boolean IsThereAPlant();
-	
 	boolean isOutOfBounds();
+
+	boolean isThereAPlant();
 	
 	float getX();
 
 	float getY();
 
 	String getPlantType();	
-
-	boolean isSelected();
 	
 	void setPlant(Plant plant);
+	
+	void setPlantType(String plant);
+
 
 }

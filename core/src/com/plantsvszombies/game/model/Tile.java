@@ -10,6 +10,7 @@ public class Tile implements ITile{
 	private boolean isOutOfBounds = false;
 	//private boolean isThereAPlant = false;
 	private Plant plant;
+	private String plantType = null;
 	
 	
 
@@ -90,7 +91,7 @@ public class Tile implements ITile{
 	}
 	
 	
-	public boolean IsThereAPlant() {
+	public boolean isThereAPlant() {
 		if(plant == null || plant.isDead())
 			return false;
 		
@@ -109,15 +110,18 @@ public class Tile implements ITile{
 
 	@Override
 	public String getPlantType() {
-		// TODO Auto-generated method stub
-		return null;
+		if(!isThereAPlant())
+			return null;
+		
+		return plantType;
 	}
-
-	@Override
-	public boolean isSelected() {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public void setPlantType(String plantType) {
+		
+		this.plantType = plantType;
+		
 	}
+ 
 	
 	public void setPlant(Plant plant) {
 		

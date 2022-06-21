@@ -64,6 +64,7 @@ public class InputController {
 			}			
 
 			tile.setPlant(plant);
+			tile.setPlantType(selectedPlantType);
 			isPlantSelected = false;
 			selectedPlantType = null;
 			return plant;
@@ -92,12 +93,9 @@ public class InputController {
 		
 		
 		
-		if(tile.isOutOfBounds()) 
+		if(tile.isOutOfBounds() || tile.isThereAPlant()) 
 			return null;
-		
-		if(tile.IsThereAPlant())
-			return null;
-		
+
 		
 		if(!isPlantSelected) 
 			return selectPlant(tile);

@@ -19,19 +19,10 @@ public class ShopTile implements ITile {
 	public String getPlantType() {
 		return plantType;
 	}
-	public boolean isSelected() {
-		return isSelected;
-	}
 	
-	public void Select() {
-		isSelected = true;
+	public void setPlantType(String plantType) {
 		
 	}
-	
-	public void Unselect() {
-		isSelected = false;
-	}
-
 
 	@Override
 	public int getPositionTileX() {
@@ -47,7 +38,7 @@ public class ShopTile implements ITile {
 
 
 	@Override
-	public boolean IsThereAPlant() {
+	public boolean isThereAPlant() {
 		return false;
 	}
 

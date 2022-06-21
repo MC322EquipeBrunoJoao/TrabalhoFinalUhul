@@ -9,10 +9,11 @@ import com.plantsvszombies.game.controller.ActionListener;
 
 public class PeaShooter extends Plant {
 	
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 6402792614474539611L;
 	private long lastShootTime = TimeUtils.millis();
 	private Sound shootSound = Gdx.audio.newSound(Gdx.files.internal("peashooterShoot.mp3"));
 

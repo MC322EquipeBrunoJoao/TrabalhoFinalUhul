@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Projectile;
+import com.plantsvszombies.game.model.Sun;
 import com.plantsvszombies.game.model.Zombie;
 
 public class EntityController {
@@ -18,6 +19,7 @@ public class EntityController {
 	private static final EntityController entityController = new EntityController();
 	private ArrayList<Plant> plants = new ArrayList<Plant>();
 	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
+	private ArrayList<Sun> suns = new ArrayList<Sun>();
 	private ArrayList<Projectile> plantProjectiles = new ArrayList<Projectile>();
 	private Sound peaHit = Gdx.audio.newSound(Gdx.files.internal("peaHit.mp3"));
 	private ArrayList<Entity> totalEntities = new ArrayList<Entity>();
@@ -188,6 +190,18 @@ public class EntityController {
 	public void addEntity(Entity entity) {
 		totalEntities.add(entity);
 	}
+	
+	public void addSun(Sun sun) {
+		suns.add(sun);
+		totalEntities.add(sun);
+	}
+	
+	public ArrayList<Sun> getSuns(){
+		
+		return suns;
+		
+	}
+	
 	public void setMap(TiledMap map) {
 		this.map = map;
 	}

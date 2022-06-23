@@ -11,6 +11,7 @@ public class MapController {
 	private static final MapController mapController = new MapController();
 	TiledMap map;
 	ITile[][] matrizMapa = new ITile[12][7];
+	ShopController shopController = ShopController.getInstance();
 
 	private MapController() {};
 	
@@ -53,8 +54,10 @@ public class MapController {
 		//System.out.println(coluna);
 		
 		return matrizMapa[coluna][linha];
-		
-		
+			
+	}
+	public ShopController getShopController() {
+		return this.shopController;
 	}
 
 }

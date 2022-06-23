@@ -4,9 +4,9 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 
 public class ShopTile implements ITile {
 	private String plantType;
-	private boolean isSelected;
 	private int coluna;
 	private TiledMap map;
+	//private Plant plant;
 
 	public ShopTile(int coluna, TiledMap map, String plantType) {
 		
@@ -21,6 +21,8 @@ public class ShopTile implements ITile {
 	}
 	
 	public void setPlantType(String plantType) {
+		
+		this.plantType = plantType;
 		
 	}
 
@@ -75,5 +77,5 @@ public class ShopTile implements ITile {
 	public void setPlant(Plant plant) {
 
 	}
-
+	
 }

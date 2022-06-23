@@ -19,6 +19,7 @@ import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.ITile;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.ShopTile;
+import com.plantsvszombies.game.model.Sun;
 import com.plantsvszombies.game.model.Tile;
 
 public class GameScreen extends ScreenAdapter implements InputProcessor{
@@ -80,7 +81,8 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        for (Entity entity : masterController.getEntities()) {
 	        	Vector2 vetor = new Vector2();
 	        	entity.getCenter(vetor);
-	        	game.batch.draw(entity.getTexture(), entity.getX(), entity.getY(), entity.getWidth(), entity.getHeight());
+	        	game.batch.draw(entity.getTexture(),
+	        			entity.getX(), entity.getY(), entity.getWidth(), entity.getHeight());
 	        }
 	        //entity.draw(game.batch);
 	        //controller.update()
@@ -124,6 +126,21 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 		public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 			
 			//lembra de depois adicionar um mapController
+			for(Sun sun : masterController.getEntityController().getSuns()) {
+				ArrayList<Sun> removedSuns = new ArrayList<Sun>();
+				
+				if(sun.isInsideSunArea(screenX, Gdx.graphics.getHeight() - screenY)) {
+					masterController.getMapController().getShopController().pickSun();
+					masterController.getEntityController().getSuns().remove(sun);
+					masterController.getEntityController().getEntities().remove(sun);
+					System.out.println("\n QTD SOL" + masterController.getMapController().getShopController().getSunAmount());
+					return true;
+					
+				}
+				
+			}
+			
+			
 			
 			//Tile tile = new Tile(screenX, screenY, map);
 			ITile tile = masterController.getMapController().getTile(screenX, Gdx.graphics.getHeight() - screenY);

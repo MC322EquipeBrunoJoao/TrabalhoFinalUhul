@@ -2,6 +2,7 @@ package com.plantsvszombies.game.controller;
 
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Projectile;
+import com.plantsvszombies.game.model.Sun;
 
 public class ActionListener {
 	
@@ -15,6 +16,10 @@ public class ActionListener {
 	
 	public void notifyNewEntity(Entity entity) {
 		EntityController.getInstance().addEntity(entity);
+	}
+	
+	public void notifyNewSun(Sun sun) {
+		EntityController.getInstance().addSun(sun);
 	}
 	
 	public static ActionListener getInstance() {

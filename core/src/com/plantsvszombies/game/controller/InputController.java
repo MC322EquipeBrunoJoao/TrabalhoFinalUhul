@@ -43,7 +43,7 @@ public class InputController {
 			
 			switch(selectedPlantType) {
 			
-			case "PeaShooter": 
+			case "PeaShooter":
 				plant = new PeaShooter(tile.getX(), tile.getY());
 				break;
 

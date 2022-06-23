@@ -54,6 +54,9 @@ public class MasterController {
 	public ArrayList<Entity> getEntities() {
 		return EntityController.getInstance().getEntities();
 	}
+	public EntityController getEntityController() {
+		return EntityController.getInstance();
+	}
 	
 	public InputController getInputController() {
 		return InputController.getInstance();

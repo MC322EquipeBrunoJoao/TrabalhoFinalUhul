@@ -15,6 +15,7 @@ public class SunFlower extends Plant {
 	private static final long serialVersionUID = 1L;
 	private long timeLastEnergy = TimeUtils.millis();
 	private static Texture sunflowerTexture = new Texture(Gdx.files.internal("sunflower.png"));
+	private static int Price = 50;
 	
 	public SunFlower(float xCenter, float yCenter) {
 		super(100, sunflowerTexture, xCenter, yCenter);
@@ -34,6 +35,9 @@ public class SunFlower extends Plant {
 		double yIncrement = MathUtils.randomSign() * Math.sqrt(8100 - Math.pow(xIncrement, 2));
 		ActionListener.getInstance().notifyNewSun(new Sun(vector.x + (float) xIncrement, vector.y + (float) yIncrement));
 		
+	}
+	public static int getPrice() {
+		return Price;
 	}
 
 }

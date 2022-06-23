@@ -37,31 +37,9 @@ public class InputController {
 	}
 	
 	private Plant createPlant(ITile tile) {
-		Plant plant = null;
 		
-		if(tile.getPositionTileY() != 5) {
-			
-			switch(selectedPlantType) {
-			
-			case "PeaShooter":
-				plant = new PeaShooter(tile.getX(), tile.getY());
-				break;
-
-								
-			case "Sunflower":		
-				plant = new SunFlower(tile.getX(), tile.getY());
-				break;
-				
-								
-			case "WallNut":
-				plant = new WallNut(tile.getX(), tile.getY());
-				break;
-				
-								
-			default:
-				break;
-			
-			}			
+		if(tile.getPositionTileY() != 5) {	
+			Plant plant = ShopController.getInstance().createPlant(selectedPlantType, tile.getX(), tile.getY());		
 
 			tile.setPlant(plant);
 			tile.setPlantType(selectedPlantType);
@@ -85,7 +63,7 @@ public class InputController {
 		
 	}
 
-	public Plant HandleEvent(ITile tile) {
+	public Plant HandleTileEvent(ITile tile) {
 		
 		System.out.println(tile.getPositionTileX());
 		System.out.println(tile.getPositionTileY());
@@ -103,9 +81,8 @@ public class InputController {
 		
 		else {
 			
-			try{
-				
-				return createPlant(tile);		
+			try{		
+				 return createPlant(tile);	 
 			}
 			
 			catch(NullPointerException e) {
@@ -118,6 +95,8 @@ public class InputController {
 			
 			
 		}
+		
+		
 		
 				
 

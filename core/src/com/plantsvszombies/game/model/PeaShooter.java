@@ -17,6 +17,7 @@ public class PeaShooter extends Plant {
 	private long lastShootTime = TimeUtils.millis();
 	private static Sound shootSound = Gdx.audio.newSound(Gdx.files.internal("peashooterShoot.mp3"));
 	private static Texture shootTexture = new Texture(Gdx.files.internal("pea.png"));
+	private static int Price = 100;
 
 	public PeaShooter(float xCenter, float yCenter) {
 		super(100, new Texture(Gdx.files.internal("shooter.png")), xCenter, yCenter);
@@ -34,5 +35,10 @@ public class PeaShooter extends Plant {
 		Vector2 vector = new Vector2();
 		this.getCenter(vector);
 		return new Projectile(shootTexture, vector.x + 35, vector.y + 15, 25, 25);
+	}
+	
+	public static int getPrice() {
+		return Price;
+		
 	}
 }

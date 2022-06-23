@@ -8,13 +8,17 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.plantsvszombies.game.model.ITile;
+import com.plantsvszombies.game.model.PeaShooter;
+import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.ShopTile;
+import com.plantsvszombies.game.model.SunFlower;
 import com.plantsvszombies.game.model.Tile;
+import com.plantsvszombies.game.model.WallNut;
 
 public class ShopController {
 	
 	private static final ShopController shopController = new ShopController();
-	private int sunAmount;
+	private int sunAmount = 50;
 	private TiledMap map;
 	private Sound pickSunSound = Gdx.audio.newSound(Gdx.files.internal("sunCollected.mp3"));
 	
@@ -69,12 +73,52 @@ public class ShopController {
 			Cell cell = standardLayer
 					.getCell(tile.getPositionTileX(), tile.getPositionTileY());
 			
-			if(tile.getPlantType() != "") 
-				cell.setTile(null);
+			cell.setTile(null);
 
 		}
 		
 		
+	}
+	
+	public Plant createPlant(String selectedPlantType, float x, float y) {
+		
+		Plant plant = null;
+	
+		switch(selectedPlantType) {
+		
+		case "PeaShooter":
+			if(sunAmount >= PeaShooter.getPrice()) {
+				plant = new PeaShooter(x, y);
+				sunAmount -= PeaShooter.getPrice();
+			}
+			break;
+
+							
+		case "Sunflower":
+			if(sunAmount >= SunFlower.getPrice()) {
+				plant = new SunFlower(x, y);
+				sunAmount -= SunFlower.getPrice();
+			}
+				
+			break;
+			
+							
+		case "WallNut":
+			if(sunAmount >= WallNut.getPrice()) {
+				plant = new WallNut(x, y);
+				sunAmount -= WallNut.getPrice();				
+			}
+			break;
+			
+							
+		default:
+			break;
+		
+		}			
+
+		
+		return plant;
+					
 	}
 
 }

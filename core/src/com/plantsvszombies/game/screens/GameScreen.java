@@ -8,6 +8,7 @@ import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
@@ -30,6 +31,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	private OrthographicCamera camera;
 	private MasterController masterController = MasterController.getInstance();
 	private Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("backgroundMusic.mp3"));
+	BitmapFont font = new BitmapFont();
 	
 	public GameScreen(PlantsVsZombies game) {
 		this.game = game;
@@ -76,6 +78,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        
 	        
 	        game.batch.begin();
+	        
 	        
 	        
 	        for (Entity entity : masterController.getEntities()) {

@@ -9,6 +9,7 @@ public class WallNut extends Plant {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static int Price = 50;
 
 	public WallNut(float xCenter, float yCenter) {
 		super(400, new Texture(Gdx.files.internal("wallnut.png")), xCenter, yCenter);
@@ -22,5 +23,10 @@ public class WallNut extends Plant {
 			this.setTexture(new Texture(Gdx.files.internal("wallnut3.png")));
 		}
 	};
+	
+	public static int getPrice() {
+		return Price;
+	}
+	
 
 }

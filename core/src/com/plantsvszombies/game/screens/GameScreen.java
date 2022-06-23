@@ -126,62 +126,23 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 		@Override
 		public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 			
-			//lembra de depois adicionar um mapController
-			for(Sun sun : masterController.getEntityController().getSuns()) {
-				ArrayList<Sun> removedSuns = new ArrayList<Sun>();
+			
+			for(Sun sun : masterController.getSuns()) {
 				
 				if(sun.isInsideSunArea(screenX, Gdx.graphics.getHeight() - screenY)) {
-					masterController.getMapController().getShopController().pickSun();
-					masterController.getEntityController().getSuns().remove(sun);
-					masterController.getEntityController().getEntities().remove(sun);
+					masterController.pickSun(sun);
 					System.out.println("\n QTD SOL" + masterController.getMapController().getShopController().getSunAmount());
 					return true;
 					
 				}
 				
 			}
-			
-			
-			
-			//Tile tile = new Tile(screenX, screenY, map);
-			ITile tile = masterController.getMapController().getTile(screenX, Gdx.graphics.getHeight() - screenY);
-			
-			TiledMapTileLayer standardLayer = (TiledMapTileLayer) map.getLayers().get("Camada de Tiles 1");
-			
-			ArrayList<Cell> shop = new ArrayList<Cell>();
-			
-			for(int i=0; i < 5; i++) {
-				
-				shop.add(standardLayer.getCell(4 + i, 5));
-				
-				
-			}
-			
-			//shop.add(standardLayer.getCell(4, 5));
-			//shop.add(standardLayer.getCell(5, 5));
-			
-			for(int i = 0; i < shop.size(); i++) {
-				
-				shop.get(i)
-				.setTile(map.getTileSets().getTileSet("lawn new").getTile(i + 5));
-				
-			}
-			
-			
-			
-			if(tile.getPositionTileY() == 5){
-				Cell cell = standardLayer
-						.getCell(tile.getPositionTileX(), tile.getPositionTileY());
-				
-				if(tile.getPlantType() != "") 
-					cell.setTile(null);
 
-			}
+			ITile tile = masterController.getTile(screenX, Gdx.graphics.getHeight() - screenY);
 			
+			masterController.shopInteraction(tile);
 			
-			
-			
-			Plant plant = masterController.getInputController().HandleEvent(tile);
+			Plant plant = masterController.HandleEvent(tile);
 			
 			if(plant != null)
 				masterController.addPlant(plant);

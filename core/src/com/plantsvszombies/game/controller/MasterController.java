@@ -3,10 +3,13 @@ package com.plantsvszombies.game.controller;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.model.Entity;
+import com.plantsvszombies.game.model.ITile;
 import com.plantsvszombies.game.model.Plant;
+import com.plantsvszombies.game.model.Sun;
 import com.plantsvszombies.game.model.Zombie;
 import com.plantsvszombies.game.screens.GameOverScreen;
 import com.plantsvszombies.game.screens.StartScreen;
@@ -73,8 +76,46 @@ public class MasterController {
 		
 		this.map = MapController.getInstance().createMap(path);
 		EntityController.getInstance().setMap(map);
+		ShopController.getInstance().setMap(map);
 		return this.map;
 		
 	}
+	
+	public ShopController getShopController() {
+		
+		return ShopController.getInstance();
+		
+	}
+	
+	public void shopInteraction(ITile tile) {
+		
+		ShopController.getInstance().shopInteraction(tile);
+	}
+	
+	public Plant HandleEvent(ITile tile) {
+		return InputController.getInstance().HandleTileEvent(tile);
+	}
+	
+	public ITile getTile(int xPixels, int yPixels) {
+		
+		return MapController.getInstance().getTile(xPixels, yPixels);
+		
+		
+	}
+	
+	public ArrayList<Sun> getSuns(){
+		
+		return EntityController.getInstance().getSuns();
+		
+	}
+	
+	public void pickSun(Sun sun) {
+		
+		ShopController.getInstance().pickSun();
+		EntityController.getInstance().getSuns().remove(sun);
+		EntityController.getInstance().getEntities().remove(sun);
+	}
+	
+	
 	
 }

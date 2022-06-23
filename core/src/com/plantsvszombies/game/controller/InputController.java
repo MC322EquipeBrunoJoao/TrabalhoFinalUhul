@@ -85,7 +85,7 @@ public class InputController {
 		
 	}
 
-	public Plant HandleEvent(ITile tile) {
+	public Plant HandleTileEvent(ITile tile) {
 		
 		System.out.println(tile.getPositionTileX());
 		System.out.println(tile.getPositionTileY());
@@ -118,6 +118,8 @@ public class InputController {
 			
 			
 		}
+		
+		
 		
 				
 

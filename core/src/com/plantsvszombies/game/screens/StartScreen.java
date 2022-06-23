@@ -34,8 +34,6 @@ public class StartScreen extends ScreenAdapter implements InputProcessor {
     
     @Override
     public void render(float delta) {
-    	
-        Gdx.gl.glClearColor(0, 0, .25f, 1);
         game.batch.begin();
         game.batch.draw(backgroundImage, 0, 0, 1250, 700);
         game.batch.end();
@@ -43,14 +41,14 @@ public class StartScreen extends ScreenAdapter implements InputProcessor {
     
     @Override
     public void hide() {
+		backgroundMusic.stop();
         super.dispose();
     }
 	
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		game.setScreen(game.getGameScreen());
-		backgroundMusic.stop();
+		game.setScreen(new GameScreen(game));
 		return false;
 	}
 

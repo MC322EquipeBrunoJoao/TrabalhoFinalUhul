@@ -11,9 +11,6 @@ import com.plantsvszombies.game.screens.StartScreen;
 public class PlantsVsZombies extends Game {
 	
 	public SpriteBatch batch;
-	private GameScreen gameScreen;
-	private GameOverScreen gameOverScreen;
-	private StartScreen startScreen;
 	
 	@Override
 	public void create () {
@@ -21,24 +18,12 @@ public class PlantsVsZombies extends Game {
 		MasterController.getInstance().setGame(this);
 		batch = new SpriteBatch();
 		
-		gameScreen = new GameScreen(this);
-		gameOverScreen = new GameOverScreen(this);
-		startScreen = new StartScreen(this);
-		
-		setScreen(startScreen);
+		setScreen(new StartScreen(this));
 	}
 
 	@Override
 	public void dispose () {
 		batch.dispose();
-	}
-	
-	public GameScreen getGameScreen() {
-		return gameScreen;
-	}
-	
-	public GameOverScreen getGameOverScreen() {
-		return gameOverScreen;
 	}
 
 }

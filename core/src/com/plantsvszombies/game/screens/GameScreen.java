@@ -93,6 +93,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 
 	    @Override
 	    public void hide() {
+	    	backgroundMusic.stop();
 	        super.dispose();
 	    }
 	    

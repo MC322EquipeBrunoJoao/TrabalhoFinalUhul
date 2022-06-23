@@ -8,6 +8,8 @@ import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Zombie;
+import com.plantsvszombies.game.screens.GameOverScreen;
+import com.plantsvszombies.game.screens.StartScreen;
 
 public class MasterController {
 	
@@ -27,8 +29,8 @@ public class MasterController {
 	}
 	
 	public void gameOver() {
-		game.setScreen(game.getGameOverScreen());
-		
+		EntityController.getInstance().clearEntities();
+		game.setScreen(new GameOverScreen(game));
 	}
 	
 	public void control(float deltaTime) {

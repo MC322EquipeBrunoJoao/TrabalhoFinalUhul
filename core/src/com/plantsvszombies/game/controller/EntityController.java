@@ -32,11 +32,23 @@ public class EntityController {
 		return entityController;
 	}
 	
-	private void gameOver() {
-		for (int i=0; i < totalEntities.size(); i++) {
+	public void clearEntities() {
+		for (int i = plants.size() - 1; i >= 0; i--) {
+			plants.remove(i);
+		}
+		for (int i = zombies.size() - 1; i >= 0; i--) {
+			zombies.remove(i);
+		}
+		for (int i = plantProjectiles.size() - 1; i >= 0; i--) {
+			plantProjectiles.remove(i);
+		}
+		for (int i = suns.size() - 1; i >= 0; i--) {
+			suns.remove(i);
+		}
+		for (int i = totalEntities.size() - 1; i >= 0; i--) {
+			totalEntities.get(i).disposeTexture();
 			totalEntities.remove(i);
 		}
-		MasterController.getInstance().gameOver();
 	}
 	
 	private void controlZombies(double deltaTime) {
@@ -79,15 +91,17 @@ public class EntityController {
 		for (Plant removedPlant : removedPlants) {
 			totalEntities.remove(removedPlant);
 			plants.remove(removedPlant);
+			removedPlant.disposeTexture();
 		}
 		
 		for (Zombie removedZombie : removedZombies) {
 			totalEntities.remove(removedZombie);
 			zombies.remove(removedZombie);
+			removedZombie.disposeTexture();
 		}
 		
 		if (gameOver) {
-			gameOver();
+			MasterController.getInstance().gameOver();
 		}
 		
 	}
@@ -125,15 +139,17 @@ public class EntityController {
 		for (Zombie removedZombie : removedZombies) {
 			totalEntities.remove(removedZombie);
 			zombies.remove(removedZombie);
+			removedZombie.disposeTexture();
 		}
 		for (Projectile removedProjectile : removedProjectiles) {
 			totalEntities.remove(removedProjectile);
 			plantProjectiles.remove(removedProjectile);
+			removedProjectile.disposeTexture();
 		}
 	}
 	
 	public void controlZombieGeneration() {
-		if (TimeUtils.timeSinceMillis(lastGeneration) > 3000) {
+		if (TimeUtils.timeSinceMillis(lastGeneration) > 5000) {
 			
 			int tileHeight = map.getProperties().get("tileheight", Integer.class);
 			int tileY = (MathUtils.random(0,500)/tileHeight);

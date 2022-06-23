@@ -13,11 +13,11 @@ public class Zombie extends Character {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private float[] standartVelocity = {-100, 0};
-	private float[] velocity = {-100,0};
+	private float[] standartVelocity = {-50, 0};
+	private float[] velocity = {-50,0};
 	private float damage;
 	private long timeLastAttack = TimeUtils.millis();
-	private Sound biteSound = Gdx.audio.newSound(Gdx.files.internal("ZombieBite.ogg"));
+	private static Sound biteSound = Gdx.audio.newSound(Gdx.files.internal("ZombieBite.ogg"));
 
 	public Zombie(float health, float damage, Texture texture, float xCenter, float yCenter) {
 		super(health, texture, xCenter, yCenter, 150);

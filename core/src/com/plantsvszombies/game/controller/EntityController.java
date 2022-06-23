@@ -26,9 +26,13 @@ public class EntityController {
 	private long lastGeneration = TimeUtils.millis();
 	private TiledMap map;
 	
+	private Texture bucketZombieImage = new Texture(Gdx.files.internal("bucketzombie.png"));
+	private Texture coneZombieImage = new Texture(Gdx.files.internal("conezombie.png"));
+	private Texture standartZombieImage = new Texture(Gdx.files.internal("zombie.png"));
+	
 	private EntityController() {};
 	
-	protected static EntityController getInstance() {
+	protected static EntityController getInstance()  {
 		return entityController;
 	}
 	
@@ -46,7 +50,6 @@ public class EntityController {
 			suns.remove(i);
 		}
 		for (int i = totalEntities.size() - 1; i >= 0; i--) {
-			totalEntities.get(i).disposeTexture();
 			totalEntities.remove(i);
 		}
 	}
@@ -91,13 +94,11 @@ public class EntityController {
 		for (Plant removedPlant : removedPlants) {
 			totalEntities.remove(removedPlant);
 			plants.remove(removedPlant);
-			removedPlant.disposeTexture();
 		}
 		
 		for (Zombie removedZombie : removedZombies) {
 			totalEntities.remove(removedZombie);
 			zombies.remove(removedZombie);
-			removedZombie.disposeTexture();
 		}
 		
 		if (gameOver) {
@@ -139,12 +140,10 @@ public class EntityController {
 		for (Zombie removedZombie : removedZombies) {
 			totalEntities.remove(removedZombie);
 			zombies.remove(removedZombie);
-			removedZombie.disposeTexture();
 		}
 		for (Projectile removedProjectile : removedProjectiles) {
 			totalEntities.remove(removedProjectile);
 			plantProjectiles.remove(removedProjectile);
-			removedProjectile.disposeTexture();
 		}
 	}
 	
@@ -158,16 +157,13 @@ public class EntityController {
 			int n = MathUtils.random(1, 100);
 			System.out.println(n);
 			if (n <= 10) {
-				Texture zombieImage = new Texture(Gdx.files.internal("bucketzombie.png"));
-				newZombie = new Zombie(400, 35, zombieImage, 1350, (tileY + 1)*tileHeight - 35 );
+				newZombie = new Zombie(400, 35, bucketZombieImage, 1350, (tileY + 1)*tileHeight - 35 );
 			}
 			else if (n <= 30) {
-				Texture zombieImage = new Texture(Gdx.files.internal("conezombie.png"));
-				newZombie = new Zombie(200, 35, zombieImage, 1350, (tileY + 1)*tileHeight - 35);
+				newZombie = new Zombie(200, 35, coneZombieImage, 1350, (tileY + 1)*tileHeight - 35);
 			}
 			else {
-				Texture zombieImage = new Texture(Gdx.files.internal("zombie.png"));
-				newZombie = new Zombie(100, 35, zombieImage, 1350, (tileY + 1)*tileHeight - 35);
+				newZombie = new Zombie(100, 35, standartZombieImage, 1350, (tileY + 1)*tileHeight - 35);
 			}
 			this.addZombie(newZombie);
 			

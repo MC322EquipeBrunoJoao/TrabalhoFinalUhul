@@ -24,8 +24,4 @@ public abstract class Entity extends Rectangle {
 		return texture;
 	}
 	
-	public void disposeTexture() {
-		texture.dispose();
-	}
-	
 }

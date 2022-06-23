@@ -18,6 +18,7 @@ public class Zombie extends Character {
 	private float damage;
 	private long timeLastAttack = TimeUtils.millis();
 	private static Sound biteSound = Gdx.audio.newSound(Gdx.files.internal("ZombieBite.ogg"));
+	private Rectangle hitBox =  new Rectangle(x, y, width, height - 35);
 
 	public Zombie(float health, float damage, Texture texture, float xCenter, float yCenter) {
 		super(health, texture, xCenter, yCenter, 150);
@@ -68,6 +69,8 @@ public class Zombie extends Character {
 	}
 	
 	public Rectangle getHitBox() {
-		return new Rectangle(x, y, width, height - 35);
+		hitBox.x = x;
+		hitBox.y = y;
+		return hitBox;
 	}
  }

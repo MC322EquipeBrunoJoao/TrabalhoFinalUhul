@@ -9,9 +9,10 @@ public class Sun extends Entity {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static Texture sunTexture = new Texture(Gdx.files.internal("sun.png"));
 
 	public Sun(float xCenter, float yCenter) {
-		super(new Texture(Gdx.files.internal("sun.png")), xCenter, yCenter, 75, 75);
+		super(sunTexture, xCenter, yCenter, 75, 75);
 	}
 	
 	public boolean isInsideSunArea(int x, int y) {

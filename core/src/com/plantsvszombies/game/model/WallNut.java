@@ -9,17 +9,20 @@ public class WallNut extends Plant {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private static Texture wallnutTexture1 = new Texture(Gdx.files.internal("wallnut.png"));
+	private static Texture wallnutTexture2 = new Texture(Gdx.files.internal("wallnut2.png"));
+	private static Texture wallnutTexture3 = new Texture(Gdx.files.internal("wallnut3.png"));
 
 	public WallNut(float xCenter, float yCenter) {
-		super(400, new Texture(Gdx.files.internal("wallnut.png")), xCenter, yCenter);
+		super(400, wallnutTexture1, xCenter, yCenter);
 	}
 
 	public void act() {
 		if (this.getHealth() <= 300) {
-			this.setTexture(new Texture(Gdx.files.internal("wallnut2.png")));
+			this.setTexture(wallnutTexture2);
 		}
 		if (this.getHealth() <= 100) {
-			this.setTexture(new Texture(Gdx.files.internal("wallnut3.png")));
+			this.setTexture(wallnutTexture3);
 		}
 	};
 

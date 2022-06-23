@@ -74,9 +74,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        renderer.setView(camera);
 	        renderer.render();
 	        
-	        
 	        game.batch.begin();
-	        
 	        
 	        for (Entity entity : masterController.getEntities()) {
 	        	Vector2 vetor = new Vector2();
@@ -88,7 +86,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        //controller.update()
 	        //controller.draw()
 	        game.batch.end();
-
+	        
 	    }
 
 	    @Override

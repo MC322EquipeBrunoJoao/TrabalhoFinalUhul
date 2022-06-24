@@ -13,6 +13,7 @@ import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Sun;
 import com.plantsvszombies.game.model.Zombie;
 import com.plantsvszombies.game.screens.GameOverScreen;
+import com.plantsvszombies.game.screens.GameWonScreen;
 import com.plantsvszombies.game.screens.StartScreen;
 
 public class MasterController {
@@ -28,13 +29,21 @@ public class MasterController {
 		return masterController;
 	}
 	
+	public void setInitialGameConditions() {
+		EntityController.getInstance().setInitialConditions();
+		ShopController.getInstance().setInitialSunAmount();
+	}
+	
 	public void setGame(PlantsVsZombies game) {
 		this.game = game;
 	}
 	
 	public void gameOver() {
-		EntityController.getInstance().clearEntities();
 		game.setScreen(new GameOverScreen(game));
+	}
+	
+	public void gameWon() {
+		game.setScreen(new GameWonScreen(game));
 	}
 	
 	public void control(float deltaTime) {
@@ -105,9 +114,11 @@ public class MasterController {
 	}
 	
 	public ArrayList<Sun> getSuns(){
-		
 		return EntityController.getInstance().getSuns();
-		
+	}
+	
+	public ArrayList<Zombie> getZombies() {
+		return EntityController.getInstance().getZombies();
 	}
 	
 	public void pickSun(Sun sun) {

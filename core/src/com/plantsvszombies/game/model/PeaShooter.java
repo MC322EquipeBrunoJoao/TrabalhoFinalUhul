@@ -30,7 +30,7 @@ public class PeaShooter extends Plant {
 		}
 	}
 	
-	public Projectile shoot() {
+	private Projectile shoot() {
 		shootSound.play(1f);
 		Vector2 vector = new Vector2();
 		this.getCenter(vector);

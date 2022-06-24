@@ -39,6 +39,10 @@ public class ShopController {
 		return sunAmount;
 	}
 	
+	public void setInitialSunAmount() {
+		sunAmount = 50;
+	}
+	
 	public void pickSun() {
 		pickSunSound.play();
 		sunAmount += 50;

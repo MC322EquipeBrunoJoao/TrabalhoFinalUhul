@@ -2,8 +2,13 @@ package com.plantsvszombies.game.controller;
 
 import java.util.ArrayList;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
@@ -119,6 +124,30 @@ public class ShopController {
 		
 		return plant;
 					
+	}
+	
+	public void displaySunAmount(SpriteBatch batch) {
+		BitmapFont font = new BitmapFont();
+		
+		
+		int tileWidth = map.getProperties().get("tilewidth", Integer.class);
+        int tileHeight = map.getProperties().get("tileheight", Integer.class);
+        
+        Integer sunAmount = this.sunAmount;
+        String sunAmountStr = sunAmount.toString();
+        GlyphLayout layout = new GlyphLayout(font, sunAmountStr);
+        
+        
+        
+        
+        font.setColor(Color.BLACK);
+        
+        font.draw(batch, sunAmount.toString(),
+        		
+    			Gdx.graphics.getWidth()/2 - 2 * tileWidth - tileWidth/2 + 53 - layout.width/2,
+    			Gdx.graphics.getHeight()/2 + 3*tileHeight - 17);
+		
+		
 	}
 
 }

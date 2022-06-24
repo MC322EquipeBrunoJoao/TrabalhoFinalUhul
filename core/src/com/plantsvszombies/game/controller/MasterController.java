@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.model.Entity;
@@ -114,6 +115,15 @@ public class MasterController {
 		ShopController.getInstance().pickSun();
 		EntityController.getInstance().getSuns().remove(sun);
 		EntityController.getInstance().getEntities().remove(sun);
+	}
+	
+	public int getSunAmount() {
+		return ShopController.getInstance().getSunAmount();
+	}
+	
+	public void displaySunAmount(SpriteBatch batch) {
+		ShopController.getInstance().displaySunAmount(batch);
+		
 	}
 	
 	

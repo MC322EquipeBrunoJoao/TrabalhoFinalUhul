@@ -6,9 +6,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
@@ -32,6 +34,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	private MasterController masterController = MasterController.getInstance();
 	private Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("backgroundMusic.mp3"));
 	BitmapFont font = new BitmapFont();
+	BitmapFont.BitmapFontData bounds;
 	
 	public GameScreen(PlantsVsZombies game) {
 		this.game = game;
@@ -77,6 +80,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        renderer.render();
 	        
 	        game.batch.begin();
+	        
 
 	        for (Entity entity : masterController.getEntities()) {
 	        	Vector2 vetor = new Vector2();
@@ -84,9 +88,9 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 	        	game.batch.draw(entity.getTexture(),
 	        			entity.getX(), entity.getY(), entity.getWidth(), entity.getHeight());
 	        }
-	        //entity.draw(game.batch);
-	        //controller.update()
-	        //controller.draw()
+	        
+	        masterController.displaySunAmount(game.batch);
+
 	        game.batch.end();
 	        
 	    }

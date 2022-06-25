@@ -11,14 +11,15 @@ public class Tile implements ITile{
 	//private boolean isThereAPlant = false;
 	private Plant plant;
 	private String plantType = null;
+	private Lane lane;
 	
 	
 
 	
-	public Tile(int coluna, int linha, TiledMap map) {
+	public Tile(int coluna, int linha, MapObject mapObject) {
 		//this.xPixels = xPixels;
 		//this.yPixels = Gdx.graphics.getHeight() - reversedYPixels;
-		this.map = map;
+		this.map = mapObject.getTiledMap();
 		this.linha = linha;
 		this.coluna = coluna;
 		
@@ -127,6 +128,11 @@ public class Tile implements ITile{
 		
 		this.plant = plant;
 		
+	}
+
+	@Override
+	public Lane getLane() {
+		return lane;
 	}
 	
 }

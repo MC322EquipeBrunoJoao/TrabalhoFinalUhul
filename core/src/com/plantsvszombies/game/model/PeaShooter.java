@@ -19,8 +19,8 @@ public class PeaShooter extends Plant {
 	private static Texture shootTexture = new Texture(Gdx.files.internal("pea.png"));
 	private static int Price = 100;
 
-	public PeaShooter(float xCenter, float yCenter) {
-		super(100, new Texture(Gdx.files.internal("shooter.png")), xCenter, yCenter);
+	public PeaShooter(float xCenter, float yCenter, Lane lane) {
+		super(100, new Texture(Gdx.files.internal("shooter.png")), xCenter, yCenter, lane);
 	}
 
 	public void act() {

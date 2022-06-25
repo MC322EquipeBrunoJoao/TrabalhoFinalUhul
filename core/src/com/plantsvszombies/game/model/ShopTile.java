@@ -7,12 +7,14 @@ public class ShopTile implements ITile {
 	private int coluna;
 	private TiledMap map;
 	//private Plant plant;
+	private Lane lane;
 
-	public ShopTile(int coluna, TiledMap map, String plantType) {
+	public ShopTile(int coluna, MapObject mapObject, String plantType) {
 		
 			this.coluna = coluna;
-			this.map = map;
+			this.map = mapObject.getTiledMap();
 			this.plantType = plantType;
+			this.lane = mapObject.getLane(5);
 	}
 	
 	
@@ -76,6 +78,12 @@ public class ShopTile implements ITile {
 
 	public void setPlant(Plant plant) {
 
+	}
+
+
+	@Override
+	public Lane getLane() {
+		return lane;
 	}
 	
 }

@@ -19,6 +19,8 @@ public interface ITile {
 	void setPlant(Plant plant);
 	
 	void setPlantType(String plant);
+	
+	Lane getLane();
 
 
 }

@@ -14,8 +14,8 @@ public class WallNut extends Plant {
 	private static Texture wallnutTexture3 = new Texture(Gdx.files.internal("wallnut3.png"));
 	private static int Price = 50;
 
-	public WallNut(float xCenter, float yCenter) {
-		super(400, wallnutTexture1, xCenter, yCenter);
+	public WallNut(float xCenter, float yCenter, Lane lane) {
+		super(400, wallnutTexture1, xCenter, yCenter, lane);
 	}
 
 	public void act() {

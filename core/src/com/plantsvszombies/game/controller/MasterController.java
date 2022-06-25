@@ -11,6 +11,8 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.ITile;
+import com.plantsvszombies.game.model.Lane;
+import com.plantsvszombies.game.model.MapObject;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Sun;
 import com.plantsvszombies.game.model.Zombie;
@@ -48,7 +50,11 @@ public class MasterController {
 	}
 	
 	public void control(float deltaTime) {
-		EntityController.getInstance().controlEntities(deltaTime, MapController.getInstance().getMap());
+		EntityController.getInstance()
+						.controlEntities(deltaTime, MapController
+													.getInstance()
+													.getMapObject()
+										);
 	}
 	
 	public void incrementEnergy(int increment) {
@@ -83,7 +89,7 @@ public class MasterController {
 		
 	}
 	
-	public TiledMap createMap(String path) {
+	public MapObject createMap(String path) {
 		
 		return MapController.getInstance().createMap(path);
 		
@@ -130,7 +136,9 @@ public class MasterController {
 	}
 
 	public OrthographicCamera setCamera() {
-		TiledMap map = MapController.getInstance().getMap();
+		TiledMap map = MapController.getInstance()
+									.getMapObject()
+									.getTiledMap();
 		
         OrthographicCamera camera = new OrthographicCamera(1000, 1000);
         
@@ -143,6 +151,12 @@ public class MasterController {
         camera.position.set(xCamera,yCamera,0);
         camera.update();
         return camera;
+	}
+
+	public MapObject getMapObject() {
+
+		return MapController.getInstance().getMapObject();
+		
 	}
 	
 	

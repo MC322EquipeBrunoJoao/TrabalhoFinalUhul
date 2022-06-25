@@ -1,6 +1,7 @@
 package com.plantsvszombies.game.controller;
 
 import com.plantsvszombies.game.model.ITile;
+import com.plantsvszombies.game.model.Lane;
 import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.ShopTile;
@@ -36,10 +37,16 @@ public class InputController {
 		
 	}
 	
-	private Plant createPlant(ITile tile) {
+	private Plant createPlant(ITile tile, Lane lane) {
 		
 		if(tile.getPositionTileY() != 5) {	
-			Plant plant = ShopController.getInstance().createPlant(selectedPlantType, tile.getX(), tile.getY());		
+			Plant plant = MapController.getInstance()
+					.createPlant(
+							selectedPlantType,
+							tile.getX(),
+							tile.getY(),
+							lane
+						);		
 
 			tile.setPlant(plant);
 			tile.setPlantType(selectedPlantType);
@@ -69,6 +76,9 @@ public class InputController {
 		System.out.println(tile.getPositionTileY());
 		System.out.println(tile instanceof ShopTile);
 		
+		Lane lane = tile.getLane();
+	
+		
 		
 		
 		if(tile.isOutOfBounds() || tile.isThereAPlant()) 
@@ -82,7 +92,7 @@ public class InputController {
 		else {
 			
 			try{		
-				 return createPlant(tile);	 
+				 return createPlant(tile, lane);	 
 			}
 			
 			catch(NullPointerException e) {

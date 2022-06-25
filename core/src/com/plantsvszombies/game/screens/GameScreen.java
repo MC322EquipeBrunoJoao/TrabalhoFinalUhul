@@ -20,6 +20,7 @@ import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.controller.MasterController;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.ITile;
+import com.plantsvszombies.game.model.MapObject;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.ShopTile;
 import com.plantsvszombies.game.model.Sun;
@@ -28,7 +29,7 @@ import com.plantsvszombies.game.model.Tile;
 public class GameScreen extends ScreenAdapter implements InputProcessor{
 	
 	private PlantsVsZombies game;
-	private TiledMap map;
+	private MapObject mapObject;
 	private OrthogonalTiledMapRenderer renderer;
 	private OrthographicCamera camera;
 	private MasterController masterController = MasterController.getInstance();
@@ -45,12 +46,12 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 			backgroundMusic.setLooping(true);
 			backgroundMusic.play();
 			backgroundMusic.setVolume(0.5f);
-			map = masterController.createMap("mapa.tmx");
+			mapObject = masterController.createMap("mapa.tmx");
 			
 			MasterController.getInstance().setInitialGameConditions();
 			camera = masterController.setCamera();
 	        
-	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
+	        renderer = new OrthogonalTiledMapRenderer(mapObject.getTiledMap(), 0.1f);
 	        
     
 	        
@@ -137,6 +138,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 			ITile tile = masterController.getTile(screenX, Gdx.graphics.getHeight() - screenY);
 			
 			masterController.shopInteraction(tile);
+			MapObject mapObject = masterController.getMapObject();
 			
 			Plant plant = masterController.HandleEvent(tile);
 			

@@ -13,6 +13,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
 import com.plantsvszombies.game.model.ITile;
+import com.plantsvszombies.game.model.Lane;
+import com.plantsvszombies.game.model.MapObject;
 import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.ShopTile;
@@ -85,7 +87,7 @@ public class ShopController {
 		
 	}
 	
-	public Plant createPlant(String selectedPlantType, float x, float y) {
+	public Plant createPlant(String selectedPlantType, float x, float y, Lane lane) {
 		
 		Plant plant = null;
 	
@@ -93,7 +95,7 @@ public class ShopController {
 		
 		case "PeaShooter":
 			if(sunAmount >= PeaShooter.getPrice()) {
-				plant = new PeaShooter(x, y);
+				plant = new PeaShooter(x, y, lane);
 				sunAmount -= PeaShooter.getPrice();
 			}
 			break;
@@ -101,7 +103,7 @@ public class ShopController {
 							
 		case "Sunflower":
 			if(sunAmount >= SunFlower.getPrice()) {
-				plant = new SunFlower(x, y);
+				plant = new SunFlower(x, y, lane);
 				sunAmount -= SunFlower.getPrice();
 			}
 				
@@ -110,7 +112,7 @@ public class ShopController {
 							
 		case "WallNut":
 			if(sunAmount >= WallNut.getPrice()) {
-				plant = new WallNut(x, y);
+				plant = new WallNut(x, y, lane);
 				sunAmount -= WallNut.getPrice();				
 			}
 			break;
@@ -150,14 +152,14 @@ public class ShopController {
 		
 	}
 	
-	public void createShop(ITile[][] matrizMapa, TiledMap map, int altura) {
+	public void createShop(ITile[][] matrizMapa, MapObject mapObject, int altura) {
 		
-		matrizMapa[4][5] = new ShopTile(4, map, "PeaShooter");
-		matrizMapa[5][5] = new ShopTile(5, map, "Sunflower");
-		matrizMapa[6][5] = new ShopTile(6, map, "WallNut");
-		matrizMapa[7][5] = new ShopTile(7, map, null);
-		matrizMapa[8][5] =  new ShopTile(8, map, null);
-		matrizMapa[9][5] = new ShopTile(9, map, null);
+		matrizMapa[4][5] = new ShopTile(4, mapObject, "PeaShooter");
+		matrizMapa[5][5] = new ShopTile(5, mapObject, "Sunflower");
+		matrizMapa[6][5] = new ShopTile(6, mapObject, "WallNut");
+		matrizMapa[7][5] = new ShopTile(7, mapObject, null);
+		matrizMapa[8][5] =  new ShopTile(8, mapObject, null);
+		matrizMapa[9][5] = new ShopTile(9, mapObject, null);
 		
 		
 	}

@@ -10,6 +10,8 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.Timer;
 import com.plantsvszombies.game.model.Entity;
+import com.plantsvszombies.game.model.Lane;
+import com.plantsvszombies.game.model.MapObject;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Projectile;
 import com.plantsvszombies.game.model.Sun;
@@ -160,23 +162,25 @@ public class EntityController {
 		}
 	}
 	
-	public void controlZombieGeneration(TiledMap map) {
+	public void controlZombieGeneration(MapObject mapObject) {
 		if (TimeUtils.timeSinceMillis(lastGeneration) > zombieGenerationTime) {
 			
-			int tileHeight = map.getProperties().get("tileheight", Integer.class);
+			int tileHeight = mapObject.getTiledMap().getProperties().get("tileheight", Integer.class);
 			int tileY = (MathUtils.random(0,500)/tileHeight);
+			
+			Lane lane = mapObject.getLane(tileY);
 			
 			Zombie newZombie;
 			int n = MathUtils.random(1, 100);
 			System.out.println(n);
 			if (n <= 10) {
-				newZombie = new Zombie(300, 35, bucketZombieImage, 1300, (tileY + 1)*tileHeight - 35 );
+				newZombie = new Zombie(300, 35, bucketZombieImage, 1300, (tileY + 1)*tileHeight - 35 , lane);
 			}
 			else if (n <= 30) {
-				newZombie = new Zombie(200, 35, coneZombieImage, 1300, (tileY + 1)*tileHeight - 35);
+				newZombie = new Zombie(200, 35, coneZombieImage, 1300, (tileY + 1)*tileHeight - 35, lane);
 			}
 			else {
-				newZombie = new Zombie(100, 35, standartZombieImage, 1300, (tileY + 1)*tileHeight - 35);
+				newZombie = new Zombie(100, 35, standartZombieImage, 1300, (tileY + 1)*tileHeight - 35, lane);
 			}
 			this.addZombie(newZombie);
 			
@@ -195,13 +199,13 @@ public class EntityController {
 		}
 	}
 	
-	public void controlEntities(double deltaTime, TiledMap map) {
+	public void controlEntities(double deltaTime, MapObject mapObject) {
 		
 		controlZombies(deltaTime);
 		controlPlantsActions();
 		controlProjectiles(deltaTime);
 		if (generateZombies) {
-			controlZombieGeneration(map);
+			controlZombieGeneration(mapObject);
 		}
 		
 	}

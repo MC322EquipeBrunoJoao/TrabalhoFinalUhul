@@ -17,8 +17,8 @@ public class SunFlower extends Plant {
 	private static Texture sunflowerTexture = new Texture(Gdx.files.internal("sunflower.png"));
 	private static int Price = 50;
 	
-	public SunFlower(float xCenter, float yCenter) {
-		super(100, sunflowerTexture, xCenter, yCenter);
+	public SunFlower(float xCenter, float yCenter, Lane lane) {
+		super(100, sunflowerTexture, xCenter, yCenter, lane);
 	}
  	
 	public void act() {

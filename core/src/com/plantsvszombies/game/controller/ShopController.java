@@ -24,7 +24,6 @@ public class ShopController {
 	
 	private static final ShopController shopController = new ShopController();
 	private int sunAmount = 50;
-	private TiledMap map;
 	private Sound pickSunSound = Gdx.audio.newSound(Gdx.files.internal("sunCollected.mp3"));
 	
 	public ShopController() {
@@ -49,11 +48,8 @@ public class ShopController {
 		
 	}
 	
-	public void setMap(TiledMap map) {
-		this.map = map;
-	}
 	
-	public void shopInteraction(ITile tile) {
+	public void shopInteraction(ITile tile, TiledMap map) {
 		
 		TiledMapTileLayer standardLayer = (TiledMapTileLayer) map.getLayers().get("Camada de Tiles 1");
 		
@@ -130,7 +126,7 @@ public class ShopController {
 					
 	}
 	
-	public void displaySunAmount(SpriteBatch batch) {
+	public void displaySunAmount(SpriteBatch batch, TiledMap map) {
 		BitmapFont font = new BitmapFont();
 		
 		
@@ -150,6 +146,18 @@ public class ShopController {
         		
     			Gdx.graphics.getWidth()/2 - 2 * tileWidth - tileWidth/2 + 53 - layout.width/2,
     			Gdx.graphics.getHeight()/2 + 3*tileHeight - 17);
+		
+		
+	}
+	
+	public void createShop(ITile[][] matrizMapa, TiledMap map, int altura) {
+		
+		matrizMapa[4][5] = new ShopTile(4, map, "PeaShooter");
+		matrizMapa[5][5] = new ShopTile(5, map, "Sunflower");
+		matrizMapa[6][5] = new ShopTile(6, map, "WallNut");
+		matrizMapa[7][5] = new ShopTile(7, map, null);
+		matrizMapa[8][5] =  new ShopTile(8, map, null);
+		matrizMapa[9][5] = new ShopTile(9, map, null);
 		
 		
 	}

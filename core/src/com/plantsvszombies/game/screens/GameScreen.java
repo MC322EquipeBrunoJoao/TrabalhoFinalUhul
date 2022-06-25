@@ -42,20 +42,20 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 
 		@Override
 	    public void show() {
-	        //TmxMapLoader loader = new TmxMapLoader();
-	        //map = loader.load("mapa.tmx");
-			//map = masterController.getMapController().createMap("mapa.tmx");
 			backgroundMusic.setLooping(true);
 			backgroundMusic.play();
 			backgroundMusic.setVolume(0.5f);
 			map = masterController.createMap("mapa.tmx");
 			
 			MasterController.getInstance().setInitialGameConditions();
+			camera = masterController.setCamera();
 	        
 	        renderer = new OrthogonalTiledMapRenderer(map, 0.1f);
-	        camera = new OrthographicCamera(1000, 1000);
+	        
+    
 	        
 	        Gdx.input.setInputProcessor(this);
+	        
 	    }
 		
 
@@ -66,17 +66,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 
 	        Gdx.gl.glClearColor(0, 0, .25f, 1);
 	        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-	        
-	        float xCamera = map.getProperties().get("tilewidth", Integer.class)
-	        				* map.getProperties().get("width", Integer.class)*.05f;
-	        
-	        float yCamera = map.getProperties().get("tileheight", Integer.class)
- 				* map.getProperties().get("height", Integer.class) * .05f;
-	        
-	        camera.position.set(xCamera,yCamera,0);
-	        camera.update();
-	        
-	        //game.batch.setProjectionMatrix(camera.combined);
+
 	        
 	        renderer.setView(camera);
 	        renderer.render();
@@ -137,7 +127,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 				
 				if(sun.isInsideSunArea(screenX, Gdx.graphics.getHeight() - screenY)) {
 					masterController.pickSun(sun);
-					System.out.println("\n QTD SOL" + masterController.getMapController().getShopController().getSunAmount());
+					System.out.println("\n QTD SOL" + masterController.getSunAmount());
 					return true;
 					
 				}

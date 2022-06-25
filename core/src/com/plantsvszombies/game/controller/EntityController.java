@@ -25,7 +25,6 @@ public class EntityController {
 	private Sound peaHit = Gdx.audio.newSound(Gdx.files.internal("peaHit.mp3"));
 	private ArrayList<Entity> totalEntities = new ArrayList<Entity>();
 	private long lastGeneration = TimeUtils.millis();
-	private TiledMap map;
 	private long zombieGenerationTime = 15000;
 	private boolean generateZombies = true;
 	private Texture bucketZombieImage = new Texture(Gdx.files.internal("bucketzombie.png"));
@@ -161,7 +160,7 @@ public class EntityController {
 		}
 	}
 	
-	public void controlZombieGeneration() {
+	public void controlZombieGeneration(TiledMap map) {
 		if (TimeUtils.timeSinceMillis(lastGeneration) > zombieGenerationTime) {
 			
 			int tileHeight = map.getProperties().get("tileheight", Integer.class);
@@ -196,13 +195,13 @@ public class EntityController {
 		}
 	}
 	
-	public void controlEntities(double deltaTime) {
+	public void controlEntities(double deltaTime, TiledMap map) {
 		
 		controlZombies(deltaTime);
 		controlPlantsActions();
 		controlProjectiles(deltaTime);
 		if (generateZombies) {
-			controlZombieGeneration();
+			controlZombieGeneration(map);
 		}
 		
 	}
@@ -242,9 +241,6 @@ public class EntityController {
 	public ArrayList<Zombie> getZombies() {
 		return zombies;
 	}
-	
-	public void setMap(TiledMap map) {
-		this.map = map;
-	}
+
 	
 }

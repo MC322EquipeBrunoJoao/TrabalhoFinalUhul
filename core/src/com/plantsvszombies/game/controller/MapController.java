@@ -1,5 +1,6 @@
 package com.plantsvszombies.game.controller;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.plantsvszombies.game.model.ITile;
@@ -9,9 +10,9 @@ import com.plantsvszombies.game.model.Tile;
 public class MapController {
 	
 	private static final MapController mapController = new MapController();
-	TiledMap map;
-	ITile[][] matrizMapa = new ITile[12][7];
-	ShopController shopController = ShopController.getInstance();
+	private TiledMap map;
+	private ITile[][] matrizMapa = new ITile[12][7];
+	private ShopController shopController = ShopController.getInstance();
 
 	private MapController() {};
 	
@@ -32,12 +33,7 @@ public class MapController {
 				
 			}
 		}
-		matrizMapa[4][5] = new ShopTile(4, map, "PeaShooter");
-		matrizMapa[5][5] = new ShopTile(5, map, "Sunflower");
-		matrizMapa[6][5] = new ShopTile(6, map, "WallNut");
-		matrizMapa[7][5] = new ShopTile(7, map, null);
-		matrizMapa[8][5] =  new ShopTile(8, map, null);
-		matrizMapa[9][5] = new ShopTile(9, map, null);
+		shopController.createShop(matrizMapa, map,  5);
 		
 		
 		return map;
@@ -56,8 +52,35 @@ public class MapController {
 		return matrizMapa[coluna][linha];
 			
 	}
-	public ShopController getShopController() {
-		return this.shopController;
+
+	public TiledMap getMap() {
+		return map;
+	}
+
+	public void shopInteraction(ITile tile) {
+		shopController.shopInteraction(tile, map);
+		
+	}
+	
+	public void setInitialSunAmount() {
+		
+		shopController.setInitialSunAmount();
+	}
+
+	public void pickSun() {
+
+		shopController.pickSun();
+		
+	}
+
+	public int getSunAmount() {
+		return shopController.getSunAmount();
+	}
+
+	public void displaySunAmount(SpriteBatch batch) {
+		
+		shopController.displaySunAmount(batch, map);
+		
 	}
 
 }

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.ITile;
@@ -19,7 +21,6 @@ import com.plantsvszombies.game.screens.StartScreen;
 public class MasterController {
 	
 	private static final MasterController masterController = new MasterController();
-	private TiledMap map;
 	private int energy = 0;
 	private PlantsVsZombies game;
 	
@@ -31,7 +32,7 @@ public class MasterController {
 	
 	public void setInitialGameConditions() {
 		EntityController.getInstance().setInitialConditions();
-		ShopController.getInstance().setInitialSunAmount();
+		MapController.getInstance().setInitialSunAmount();
 	}
 	
 	public void setGame(PlantsVsZombies game) {
@@ -47,7 +48,7 @@ public class MasterController {
 	}
 	
 	public void control(float deltaTime) {
-		EntityController.getInstance().controlEntities(deltaTime);
+		EntityController.getInstance().controlEntities(deltaTime, MapController.getInstance().getMap());
 	}
 	
 	public void incrementEnergy(int increment) {
@@ -84,22 +85,13 @@ public class MasterController {
 	
 	public TiledMap createMap(String path) {
 		
-		this.map = MapController.getInstance().createMap(path);
-		EntityController.getInstance().setMap(map);
-		ShopController.getInstance().setMap(map);
-		return this.map;
-		
-	}
-	
-	public ShopController getShopController() {
-		
-		return ShopController.getInstance();
+		return MapController.getInstance().createMap(path);
 		
 	}
 	
 	public void shopInteraction(ITile tile) {
 		
-		ShopController.getInstance().shopInteraction(tile);
+		MapController.getInstance().shopInteraction(tile);
 	}
 	
 	public Plant HandleEvent(ITile tile) {
@@ -123,18 +115,34 @@ public class MasterController {
 	
 	public void pickSun(Sun sun) {
 		
-		ShopController.getInstance().pickSun();
+		MapController.getInstance().pickSun();
 		EntityController.getInstance().getSuns().remove(sun);
 		EntityController.getInstance().getEntities().remove(sun);
 	}
 	
 	public int getSunAmount() {
-		return ShopController.getInstance().getSunAmount();
+		return MapController.getInstance().getSunAmount();
 	}
 	
 	public void displaySunAmount(SpriteBatch batch) {
-		ShopController.getInstance().displaySunAmount(batch);
+		MapController.getInstance().displaySunAmount(batch);
 		
+	}
+
+	public OrthographicCamera setCamera() {
+		TiledMap map = MapController.getInstance().getMap();
+		
+        OrthographicCamera camera = new OrthographicCamera(1000, 1000);
+        
+        float xCamera = map.getProperties().get("tilewidth", Integer.class)
+				* map.getProperties().get("width", Integer.class)*.05f;
+
+        float yCamera = map.getProperties().get("tileheight", Integer.class)
+        		* map.getProperties().get("height", Integer.class) * .05f;
+        
+        camera.position.set(xCamera,yCamera,0);
+        camera.update();
+        return camera;
 	}
 	
 	

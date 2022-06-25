@@ -78,7 +78,7 @@ public class ShopController {
 		
 		
 		
-		if(tile instanceof ShopTile){
+		if(tile.getPositionTileY() == 5){
 			Cell cell = standardLayer
 					.getCell(tile.getPositionTileX(), tile.getPositionTileY());
 			

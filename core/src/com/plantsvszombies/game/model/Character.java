@@ -10,12 +10,10 @@ public abstract class Character extends Entity {
 	private static final long serialVersionUID = 1L;
 	private float health;
 	private boolean isDead = false;
-	private Lane lane;
 	
-	public Character(float health, Texture texture, float xCenter, float yCenter, int height, Lane lane) throws NumberFormatException {
+	public Character(float health, Texture texture, float xCenter, float yCenter, int height) throws NumberFormatException {
 		super(texture, xCenter, yCenter, height * texture.getWidth()/texture.getHeight(), height);
 		this.health = health;
-		this.lane = lane;
 	}
 	
 	public void takeDamage(float damageTaken) {
@@ -33,9 +31,5 @@ public abstract class Character extends Entity {
 
 	public float getHealth() {
 		return health;
-	}
-	public Lane getLane() {
-		return lane;
-	}
-	
+	}	
  }

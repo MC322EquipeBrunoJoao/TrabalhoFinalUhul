@@ -18,13 +18,15 @@ public class PeaShooter extends Plant {
 	private static Sound shootSound = Gdx.audio.newSound(Gdx.files.internal("peashooterShoot.mp3"));
 	private static Texture shootTexture = new Texture(Gdx.files.internal("pea.png"));
 	private static int Price = 100;
+	private Lane lane;
 
 	public PeaShooter(float xCenter, float yCenter, Lane lane) {
 		super(100, new Texture(Gdx.files.internal("shooter.png")), xCenter, yCenter, lane);
+		this.lane = lane;
 	}
 
 	public void act() {
-		if (TimeUtils.timeSinceMillis(lastShootTime) > 3000) {
+		if (TimeUtils.timeSinceMillis(lastShootTime) > 3000 && lane.isThereAZombie()) {
 			ActionListener.getInstance().notifyNewPlantProjectile(shoot());
 			lastShootTime = TimeUtils.millis();
 		}

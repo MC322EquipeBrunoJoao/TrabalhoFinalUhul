@@ -22,6 +22,7 @@ public class Tile implements ITile{
 		this.map = mapObject.getTiledMap();
 		this.linha = linha;
 		this.coluna = coluna;
+		this.lane = mapObject.getLane(linha);
 		
 		
 		

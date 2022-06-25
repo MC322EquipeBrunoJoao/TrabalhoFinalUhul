@@ -128,7 +128,7 @@ public class EntityController {
 		}
 	}
 	
-	private void controlProjectiles(double deltaTime) {
+	private void controlProjectiles(double deltaTime, MapObject mapObject) {
 		
 		ArrayList<Zombie> removedZombies = new ArrayList<Zombie>();
 		ArrayList<Projectile> removedProjectiles = new ArrayList<Projectile>();
@@ -145,6 +145,8 @@ public class EntityController {
 					zombie.takeDamage(projectile.getDamage());
 					if (zombie.isDead()) {
 						removedZombies.add(zombie);
+						
+						mapObject.getLane(zombie.getLaneY()).removeZombie(zombie);
 					}
 					totalEntities.remove(projectile);
 					removedProjectiles.add(projectile);
@@ -174,15 +176,16 @@ public class EntityController {
 			int n = MathUtils.random(1, 100);
 			System.out.println(n);
 			if (n <= 10) {
-				newZombie = new Zombie(300, 35, bucketZombieImage, 1300, (tileY + 1)*tileHeight - 35 , lane);
+				newZombie = new Zombie(300, 35, bucketZombieImage, 1300, (tileY + 1)*tileHeight - 35, tileY);
 			}
 			else if (n <= 30) {
-				newZombie = new Zombie(200, 35, coneZombieImage, 1300, (tileY + 1)*tileHeight - 35, lane);
+				newZombie = new Zombie(200, 35, coneZombieImage, 1300, (tileY + 1)*tileHeight - 35, tileY);
 			}
 			else {
-				newZombie = new Zombie(100, 35, standartZombieImage, 1300, (tileY + 1)*tileHeight - 35, lane);
+				newZombie = new Zombie(100, 35, standartZombieImage, 1300, (tileY + 1)*tileHeight - 35, tileY);
 			}
 			this.addZombie(newZombie);
+			lane.addZombie(newZombie);
 			
 			lastGeneration = TimeUtils.millis();
 			
@@ -203,7 +206,7 @@ public class EntityController {
 		
 		controlZombies(deltaTime);
 		controlPlantsActions();
-		controlProjectiles(deltaTime);
+		controlProjectiles(deltaTime, mapObject);
 		if (generateZombies) {
 			controlZombieGeneration(mapObject);
 		}

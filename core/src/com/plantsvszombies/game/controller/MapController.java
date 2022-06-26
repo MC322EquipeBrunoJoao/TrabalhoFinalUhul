@@ -1,13 +1,13 @@
 package com.plantsvszombies.game.controller;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch; 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.plantsvszombies.game.model.ITile;
 import com.plantsvszombies.game.model.Lane;
 import com.plantsvszombies.game.model.MapObject;
 import com.plantsvszombies.game.model.Plant;
-import com.plantsvszombies.game.model.Tile;
+import com.plantsvszombies.game.model.LawnTile;
 
 public class MapController {
 	
@@ -43,7 +43,7 @@ public class MapController {
 		for(int j=0; j < 7; j++) {
 			for(int i=0; i < 12; i++) {
 				
-				matrizMapa[i][j] = new Tile(i, j, mapObject);
+				matrizMapa[i][j] = new LawnTile(i, j, mapObject);
 				
 			}
 			

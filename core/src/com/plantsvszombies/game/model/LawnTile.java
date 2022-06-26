@@ -2,7 +2,7 @@ package com.plantsvszombies.game.model;
 
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
-public class Tile implements ITile{
+public class LawnTile implements ITile{
 	//private int xPixels, yPixels;
 	private int linha, coluna;
 	private TiledMap map;
@@ -16,7 +16,7 @@ public class Tile implements ITile{
 	
 
 	
-	public Tile(int coluna, int linha, MapObject mapObject) {
+	public LawnTile(int coluna, int linha, MapObject mapObject) {
 		//this.xPixels = xPixels;
 		//this.yPixels = Gdx.graphics.getHeight() - reversedYPixels;
 		this.map = mapObject.getTiledMap();

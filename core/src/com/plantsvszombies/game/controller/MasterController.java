@@ -147,6 +147,9 @@ public class MasterController {
 	}
 
 	public Plant handlePlantCreation(ITile tile) {
+		
+		if(tile.isThereAPlant())
+			return null;
 
 		try {
 			return createPlant(tile);

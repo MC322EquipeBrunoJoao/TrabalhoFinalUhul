@@ -120,7 +120,21 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 		
 		masterController.shopInteraction(tile);
 		
-		Plant plant = masterController.HandleEvent(tile);
+		//Plant plant = masterController.HandleEvent(tile);
+		Plant plant = null;
+		
+		if(!masterController.isPlantSelected()){
+	 			masterController.selectPlant(tile);
+		 
+		  
+		 }
+		  
+		 else{
+		  	plant = masterController.handlePlantCreation(tile);
+		  	
+		 }
+		
+		
 		
 		if(plant != null)
 			masterController.addPlant(plant);

@@ -17,17 +17,17 @@ public class InputController {
 		return inputController;
 	}
 	
-	private Plant selectPlant(ITile tile) {
+	public void selectPlant(ITile tile) {
 		
 		if(tile.getPositionTileY() != 5)
-			return null;
+			return ;
 		
 		
 		else {
 			
 			isPlantSelected = true;
 			selectedPlantType = tile.getPlantType();
-			return null;
+			return;
 			
 		}
 		
@@ -61,7 +61,7 @@ public class InputController {
 		
 	}
 
-	public Plant HandleTileEvent(ITile tile) {
+	/*public Plant HandleTileEvent(ITile tile) {
 		
 		System.out.println(tile.getPositionTileX());
 		System.out.println(tile.getPositionTileY());
@@ -94,5 +94,51 @@ public class InputController {
 				
 			}
 		}
+	}*/
+
+	public boolean isPlantSelected() {
+
+		return isPlantSelected;
 	}
+
+	public Plant handlePlantCreation(ITile tile) {
+		
+		Lane lane = tile.getLane();
+		
+		try{		
+			 return createPlant(tile, lane);	 
+		}
+		
+		catch(NullPointerException e) {
+			
+			System.out.println("Planta inválida!");
+			
+			return null;
+			
+		}
+		
+		
+		
+		
+	}
+
+	public String getSelectedPlantType() {
+
+		return selectedPlantType;
+	}
+	
+	public void UnselectPlant() {
+		
+		isPlantSelected = false;
+		selectedPlantType = null;
+		
+	}
+	
+	public void setSelectedPlantType(String newPlantType) {
+		
+		selectedPlantType = newPlantType;
+		
+	}
+	
+	
 }

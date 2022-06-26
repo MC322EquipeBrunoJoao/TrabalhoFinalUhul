@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.ITile;
+import com.plantsvszombies.game.model.Lane;
 import com.plantsvszombies.game.model.MapObject;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Sun;
@@ -82,9 +83,9 @@ public class MasterController {
 		MapController.getInstance().shopInteraction(tile);
 	}
 	
-	public Plant HandleEvent(ITile tile) {
+	/*public Plant HandleEvent(ITile tile) {
 		return InputController.getInstance().HandleTileEvent(tile);
-	}
+	}*/
 	
 	public ITile getTile(int xPixels, int yPixels) {
 		return MapController.getInstance().getTile(xPixels, yPixels);
@@ -133,6 +134,67 @@ public class MasterController {
 
 	public MapObject getMapObject() {
 		return MapController.getInstance().getMapObject();
+	}
+
+	public boolean isPlantSelected() {
+		return InputController.getInstance().isPlantSelected();
+	}
+
+	public void selectPlant(ITile tile) {
+
+		InputController.getInstance().selectPlant(tile);
+		
+	}
+
+	public Plant handlePlantCreation(ITile tile) {
+
+		try {
+			return createPlant(tile);
+		}
+		
+		catch(NullPointerException e) {
+			
+			System.out.println("Planta inválida!");
+			
+			return null;
+			
+		}
+		
+		
+		
+	}
+	
+	public Plant createPlant(ITile tile) {
+		
+		String selectedPlantType = InputController.getInstance().getSelectedPlantType();
+		Lane lane = tile.getLane();
+		
+		if(tile.getPositionTileY() != 5) {	
+			Plant plant = MapController.getInstance()
+					.createPlant(
+							selectedPlantType,
+							tile.getX(),
+							tile.getY(),
+							lane
+						);		
+
+			tile.setPlant(plant);
+			tile.setPlantType(selectedPlantType);
+			//isPlantSelected = false;
+			//selectedPlantType = null;
+			InputController.getInstance().UnselectPlant();
+			return plant;
+			
+		}
+		
+		else {
+			
+			//selectedPlantType = tile.getPlantType();
+			InputController.getInstance().setSelectedPlantType(tile.getPlantType());
+			return null;
+				
+		}
+		
 	}
 	
 	

@@ -3,12 +3,9 @@ package com.plantsvszombies.game.model;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 
 public class LawnTile implements ITile{
-	//private int xPixels, yPixels;
 	private int linha, coluna;
 	private TiledMap map;
-	//private boolean isShop = false;
 	private boolean isOutOfBounds = false;
-	//private boolean isThereAPlant = false;
 	private Plant plant;
 	private String plantType = null;
 	private Lane lane;

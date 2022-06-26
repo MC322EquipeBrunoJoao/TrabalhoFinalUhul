@@ -7,7 +7,6 @@ import com.plantsvszombies.game.model.ITile;
 import com.plantsvszombies.game.model.Lane;
 import com.plantsvszombies.game.model.MapObject;
 import com.plantsvszombies.game.model.Plant;
-import com.plantsvszombies.game.model.ShopTile;
 import com.plantsvszombies.game.model.Tile;
 
 public class MapController {

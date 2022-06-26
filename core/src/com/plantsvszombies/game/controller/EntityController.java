@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.badlogic.gdx.utils.Timer;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.Lane;
 import com.plantsvszombies.game.model.MapObject;
@@ -20,12 +18,15 @@ import com.plantsvszombies.game.model.Zombie;
 public class EntityController {
 	
 	private static final EntityController entityController = new EntityController();
+	
 	private ArrayList<Plant> plants = new ArrayList<Plant>();
 	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
 	private ArrayList<Sun> suns = new ArrayList<Sun>();
 	private ArrayList<Projectile> plantProjectiles = new ArrayList<Projectile>();
-	private Sound peaHit = Gdx.audio.newSound(Gdx.files.internal("peaHit.mp3"));
 	private ArrayList<Entity> totalEntities = new ArrayList<Entity>();
+	
+	private Sound peaHit = Gdx.audio.newSound(Gdx.files.internal("peaHit.mp3"));
+	
 	private long lastGeneration = TimeUtils.millis();
 	private long zombieGenerationTime = 15000;
 	private boolean generateZombies = true;
@@ -248,6 +249,5 @@ public class EntityController {
 	public ArrayList<Zombie> getZombies() {
 		return zombies;
 	}
-
 	
 }

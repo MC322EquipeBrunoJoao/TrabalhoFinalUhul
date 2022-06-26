@@ -2,28 +2,22 @@ package com.plantsvszombies.game.controller;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.plantsvszombies.game.PlantsVsZombies;
 import com.plantsvszombies.game.model.Entity;
 import com.plantsvszombies.game.model.ITile;
-import com.plantsvszombies.game.model.Lane;
 import com.plantsvszombies.game.model.MapObject;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.Sun;
 import com.plantsvszombies.game.model.Zombie;
 import com.plantsvszombies.game.screens.GameOverScreen;
 import com.plantsvszombies.game.screens.GameWonScreen;
-import com.plantsvszombies.game.screens.StartScreen;
 
 public class MasterController {
 	
 	private static final MasterController masterController = new MasterController();
-	private int energy = 0;
 	private PlantsVsZombies game;
 	
 	private MasterController() {};
@@ -57,14 +51,6 @@ public class MasterController {
 										);
 	}
 	
-	public void incrementEnergy(int increment) {
-		energy += increment;
-	}
-	
-	public int getEnergy() {
-		return energy;
-	}
-	
 	public void addPlant(Plant plant) {
 		EntityController.getInstance().addPlant(plant);
 	}
@@ -86,17 +72,13 @@ public class MasterController {
 	
 	public MapController getMapController() {
 		return MapController.getInstance();
-		
 	}
 	
 	public MapObject createMap(String path) {
-		
 		return MapController.getInstance().createMap(path);
-		
 	}
 	
 	public void shopInteraction(ITile tile) {
-		
 		MapController.getInstance().shopInteraction(tile);
 	}
 	
@@ -105,10 +87,7 @@ public class MasterController {
 	}
 	
 	public ITile getTile(int xPixels, int yPixels) {
-		
 		return MapController.getInstance().getTile(xPixels, yPixels);
-		
-		
 	}
 	
 	public ArrayList<Sun> getSuns(){
@@ -120,7 +99,6 @@ public class MasterController {
 	}
 	
 	public void pickSun(Sun sun) {
-		
 		MapController.getInstance().pickSun();
 		EntityController.getInstance().getSuns().remove(sun);
 		EntityController.getInstance().getEntities().remove(sun);
@@ -154,9 +132,7 @@ public class MasterController {
 	}
 
 	public MapObject getMapObject() {
-
 		return MapController.getInstance().getMapObject();
-		
 	}
 	
 	

@@ -34,8 +34,8 @@ public class SunFlower extends Plant {
 		double xIncrement =  MathUtils.random(-90,90);
 		double yIncrement = MathUtils.randomSign() * Math.sqrt(8100 - Math.pow(xIncrement, 2));
 		ActionListener.getInstance().notifyNewSun(new Sun(vector.x + (float) xIncrement, vector.y + (float) yIncrement));
-		
 	}
+	
 	public static int getPrice() {
 		return Price;
 	}

@@ -8,9 +8,7 @@ public class Lane {
 	private ArrayList<Zombie> zombies = new ArrayList<Zombie>();
 	
 	public Lane(int Y) {
-		
 		this.Y = Y;
-		
 	}
 	
 	public void addZombie(Zombie zombie) {

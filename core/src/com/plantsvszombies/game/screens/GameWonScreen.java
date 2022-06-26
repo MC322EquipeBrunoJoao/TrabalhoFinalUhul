@@ -3,17 +3,15 @@ package com.plantsvszombies.game.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.plantsvszombies.game.PlantsVsZombies;
 
 public class GameWonScreen extends ScreenAdapter implements InputProcessor{
 
 	private PlantsVsZombies game;
-	private Texture backgroundImage = new Texture(Gdx.files.internal("gameWonBackground.png"));
-	private Sound victorySound = Gdx.audio.newSound(Gdx.files.internal("victoryMusic.mp3"));
+	private static Texture backgroundImage = new Texture(Gdx.files.internal("gameWonBackground.png"));
+	private static Sound victorySound = Gdx.audio.newSound(Gdx.files.internal("victoryMusic.mp3"));
 	
 	public GameWonScreen(PlantsVsZombies game) {
 		this.game = game;

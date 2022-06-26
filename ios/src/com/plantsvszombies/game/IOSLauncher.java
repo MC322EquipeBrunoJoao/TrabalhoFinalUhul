@@ -11,7 +11,7 @@ public class IOSLauncher extends IOSApplication.Delegate {
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
-        config.useHaptics = false;
+        config.allowIpod = false;
         return new IOSApplication(new PlantsVsZombies(), config);
     }
 

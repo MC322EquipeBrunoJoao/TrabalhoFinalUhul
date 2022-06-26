@@ -41,6 +41,5 @@ public class PeaShooter extends Plant {
 	
 	public static int getPrice() {
 		return Price;
-		
 	}
 }

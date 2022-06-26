@@ -2,7 +2,6 @@ package com.plantsvszombies.game.controller;
 
 import java.util.ArrayList;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
@@ -19,7 +18,6 @@ import com.plantsvszombies.game.model.PeaShooter;
 import com.plantsvszombies.game.model.Plant;
 import com.plantsvszombies.game.model.ShopTile;
 import com.plantsvszombies.game.model.SunFlower;
-import com.plantsvszombies.game.model.Tile;
 import com.plantsvszombies.game.model.WallNut;
 
 public class ShopController {
@@ -58,14 +56,8 @@ public class ShopController {
 		ArrayList<Cell> shop = new ArrayList<Cell>();
 		
 		for(int i=0; i < 5; i++) {
-			
-			shop.add(standardLayer.getCell(4 + i, 5));
-			
-			
+			shop.add(standardLayer.getCell(4 + i, 5));	
 		}
-		
-		//shop.add(standardLayer.getCell(4, 5));
-		//shop.add(standardLayer.getCell(5, 5));
 		
 		for(int i = 0; i < shop.size(); i++) {
 			
@@ -83,7 +75,6 @@ public class ShopController {
 			cell.setTile(null);
 
 		}
-		
 		
 	}
 	
@@ -160,7 +151,6 @@ public class ShopController {
 		matrizMapa[7][5] = new ShopTile(7, mapObject, null);
 		matrizMapa[8][5] =  new ShopTile(8, mapObject, null);
 		matrizMapa[9][5] = new ShopTile(9, mapObject, null);
-		
 		
 	}
 

@@ -25,7 +25,7 @@ public class WallNut extends Plant {
 		if (this.getHealth() <= 100) {
 			this.setTexture(wallnutTexture3);
 		}
-	};
+	}
 	
 	public static int getPrice() {
 		return Price;

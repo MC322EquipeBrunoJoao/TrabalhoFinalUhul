@@ -4,18 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.plantsvszombies.game.PlantsVsZombies;
 
 public class StartScreen extends ScreenAdapter implements InputProcessor {
 	
-	private Music backgroundMusic;
-	
+	private static Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("startScreenSoundtrack.mp3"));
 	private PlantsVsZombies game;
-	//private Texture backgroundImage;
-	private Texture backgroundImage = new Texture(Gdx.files.internal("startScreenBackground.png"));
+	private static Texture backgroundImage = new Texture(Gdx.files.internal("startScreenBackground.png"));
 	
 	public StartScreen(PlantsVsZombies game) {
 		this.game = game;
@@ -23,8 +19,7 @@ public class StartScreen extends ScreenAdapter implements InputProcessor {
 	
 	@Override
     public void show() {
-		
-        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("startScreenSoundtrack.mp3"));
+	
 		backgroundMusic.setLooping(true);
 		backgroundMusic.play();
 		backgroundMusic.setVolume(0.5f);

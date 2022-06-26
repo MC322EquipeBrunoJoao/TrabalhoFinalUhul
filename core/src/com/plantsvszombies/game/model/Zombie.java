@@ -12,7 +12,6 @@ public class Zombie extends Character {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	private float[] standartVelocity = {-40, 0};
 	private float[] velocity = {-40,0};
 	private float damage;
@@ -25,7 +24,6 @@ public class Zombie extends Character {
 		super(health, texture, xCenter, yCenter, 150);
 		this.damage = damage;
 		this.laneY = laneY;
-
 	}
 	
 	public float[] getVelocity() {
@@ -80,6 +78,5 @@ public class Zombie extends Character {
 	public int getLaneY() {
 		return laneY;
 	}
-	
 
  }

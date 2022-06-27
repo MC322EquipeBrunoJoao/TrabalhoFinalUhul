@@ -148,7 +148,7 @@ public class MasterController {
 
 	public Plant handlePlantCreation(ITile tile) {
 		
-		if(tile.isThereAPlant())
+		if(tile.isThereAPlant() || tile.isOutOfBounds())
 			return null;
 
 		try {

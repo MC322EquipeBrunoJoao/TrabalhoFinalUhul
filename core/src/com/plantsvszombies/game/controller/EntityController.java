@@ -60,7 +60,7 @@ public class EntityController {
 	
 	public void setInitialConditions() {
 		clearEntities();
-		zombieGenerationTime = 15000;
+		zombieGenerationTime = 20000;
 		generateZombies = true;
 		lastGeneration = TimeUtils.millis();
 	}
@@ -180,18 +180,24 @@ public class EntityController {
 				newZombie = new Zombie(300, 35, bucketZombieImage, 1300, (tileY + 1)*tileHeight - 35, tileY);
 			}
 			else if (n <= 30) {
-				newZombie = new Zombie(200, 35, coneZombieImage, 1300, (tileY + 1)*tileHeight - 35, tileY);
+				newZombie = new Zombie(250, 35, coneZombieImage, 1300, (tileY + 1)*tileHeight - 35, tileY);
 			}
 			else {
-				newZombie = new Zombie(100, 35, standartZombieImage, 1300, (tileY + 1)*tileHeight - 35, tileY);
+				newZombie = new Zombie(150, 35, standartZombieImage, 1300, (tileY + 1)*tileHeight - 35, tileY);
 			}
 			this.addZombie(newZombie);
 			lane.addZombie(newZombie);
 			
 			lastGeneration = TimeUtils.millis();
 			
-			if (zombieGenerationTime > 1000) {
-				zombieGenerationTime -= 1000;
+			if (zombieGenerationTime > 10000) {
+				zombieGenerationTime -= 5000;
+			}
+			else if (zombieGenerationTime > 5000) {
+				zombieGenerationTime -= 1250;
+			}
+			else if (zombieGenerationTime > 1000) {
+				zombieGenerationTime -= 250;
 			}
 			else if (zombieGenerationTime > 500) {
 				zombieGenerationTime -= 50;

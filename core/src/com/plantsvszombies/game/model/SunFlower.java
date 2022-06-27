@@ -22,7 +22,7 @@ public class SunFlower extends Plant {
 	}
  	
 	public void act() {
-		if (TimeUtils.timeSinceMillis(timeLastEnergy) > 8000) {
+		if (TimeUtils.timeSinceMillis(timeLastEnergy) > 10000) {
 			timeLastEnergy = TimeUtils.millis();
 			generateSun();
 		}

@@ -18,8 +18,8 @@
 ## Slides da Prévia
 [Link para slides da prévia](assets/slidesPrevia.pptx)
 ## Slides da Apresentação Final
-[Link para slides da apresentação final](assets/slidesApresentacaoFinal.pptx)
+[Link para slides da apresentação final](assets/slidesFinal(1).pptx)
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo (MVC)
-![diagrama geral](assets/diagramaGeralJogo.png)
+![diagrama geral](assets/diagramaGeral.png)

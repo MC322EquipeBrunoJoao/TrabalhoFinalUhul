@@ -22,4 +22,4 @@
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo (MVC)
-![diagrama geral](assets/diagramaGeral.png)
+![diagrama geral](assets/diagramaGeralJogo.png)

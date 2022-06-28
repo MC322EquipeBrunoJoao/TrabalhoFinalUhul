@@ -1,0 +1,6 @@
+- Fazer telas de início e game over
+- Controlar energia da loja
+- Implementar exceptions
+- Buscar melhorias em qualidade de código / design patterns
+- Se der tempo, implementar mais plantas e zumbis para aumentar complexidade
+- Se der tempo, implementar animações

@@ -61,40 +61,6 @@ public class InputController {
 		
 	}
 
-	/*public Plant HandleTileEvent(ITile tile) {
-		
-		System.out.println(tile.getPositionTileX());
-		System.out.println(tile.getPositionTileY());
-		System.out.println(tile instanceof ShopTile);
-		
-		Lane lane = tile.getLane();
-	
-		
-		
-		
-		if(tile.isOutOfBounds() || tile.isThereAPlant()) 
-			return null;
-
-		
-		if(!isPlantSelected) 
-			return selectPlant(tile);
-			
-		
-		else {
-			
-			try{		
-				 return createPlant(tile, lane);	 
-			}
-			
-			catch(NullPointerException e) {
-				
-				System.out.println("Planta inválida!");
-				
-				return null;
-				
-			}
-		}
-	}*/
 
 	public boolean isPlantSelected() {
 

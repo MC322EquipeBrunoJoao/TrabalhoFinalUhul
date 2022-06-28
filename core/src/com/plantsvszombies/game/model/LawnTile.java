@@ -14,22 +14,12 @@ public class LawnTile implements ITile{
 
 	
 	public LawnTile(int coluna, int linha, MapObject mapObject) {
-		//this.xPixels = xPixels;
-		//this.yPixels = Gdx.graphics.getHeight() - reversedYPixels;
 		this.map = mapObject.getTiledMap();
 		this.linha = linha;
 		this.coluna = coluna;
 		this.lane = mapObject.getLane(linha);
 		
-		
-		
-		
 
-		//if(getPositionTileY() > 4 &&
-		//		(2 < getPositionTileX() && getPositionTileX() < 10)) 
-		//	isShop = true;
-		
-		
 		if(getPositionTileX() < 3)
 			isOutOfBounds = true;
 		
@@ -47,11 +37,7 @@ public class LawnTile implements ITile{
 		return linha;
 		
 	}
-	
-	//public boolean isShop() {
-	//	return isShop;
-	//}
-	
+
 	public boolean isOutOfBounds() {
 		return isOutOfBounds;
 	}

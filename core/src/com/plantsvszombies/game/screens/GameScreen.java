@@ -119,8 +119,7 @@ public class GameScreen extends ScreenAdapter implements InputProcessor{
 		ITile tile = masterController.getTile(screenX, Gdx.graphics.getHeight() - screenY);
 		
 		masterController.shopInteraction(tile);
-		
-		//Plant plant = masterController.HandleEvent(tile);
+
 		Plant plant = null;
 		
 		if(!masterController.isPlantSelected()){

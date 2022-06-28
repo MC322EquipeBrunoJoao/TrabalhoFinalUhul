@@ -183,16 +183,13 @@ public class MasterController {
 
 			tile.setPlant(plant);
 			tile.setPlantType(selectedPlantType);
-			//isPlantSelected = false;
-			//selectedPlantType = null;
 			InputController.getInstance().UnselectPlant();
 			return plant;
 			
 		}
 		
 		else {
-			
-			//selectedPlantType = tile.getPlantType();
+
 			InputController.getInstance().setSelectedPlantType(tile.getPlantType());
 			return null;
 				

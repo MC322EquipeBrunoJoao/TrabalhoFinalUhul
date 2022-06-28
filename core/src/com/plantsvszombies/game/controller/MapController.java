@@ -62,9 +62,6 @@ public class MapController {
 		int coluna = xPixels / mapObject.getTiledMap().getProperties().get("tilewidth", Integer.class);
 		int linha = yPixels / mapObject.getTiledMap().getProperties().get("tileheight", Integer.class);
 		
-		//System.out.println(linha);
-		//System.out.println(coluna);
-		
 		return matrizMapa[coluna][linha];
 			
 	}

@@ -21,5 +21,5 @@
 [Link para slides da apresentação final](assets/TrabalhoFinalPOO.pptx)
 # Diagramas
 
-## Diagrama Geral da Arquitetura do Jogo
+## Diagrama Geral da Arquitetura do Jogo (MVC)
 ![diagrama geral](assets/diagramaGeral.png)

@@ -22,4 +22,4 @@
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo
-![diagrama geral](assets/diagramaGeralArquitetura.png)
+![diagrama geral](assets/diagramaGeralProjeto.png)

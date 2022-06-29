@@ -11,7 +11,7 @@
 
 # Arquivo Executável do Jogo
 
-> [Plants Vs Zombies](https://github.com/MC322EquipeBrunoJoao/TrabalhoFinalUhul/blob/main/src/pvz.jar)
+> [Plants Vs Zombies Download](https://github.com/MC322EquipeBrunoJoao/TrabalhoFinalUhul/blob/main/src/pvz.jar)
 
 # Slides do Projeto
 

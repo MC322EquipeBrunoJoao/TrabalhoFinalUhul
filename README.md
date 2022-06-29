@@ -11,7 +11,7 @@
 
 # Arquivo Executável do Jogo
 
-> Coloque aqui um link para download do arquivo `jar` ou equivalente para execução do seu jogo.
+> [Plants Vs Zombies](https://github.com/MC322EquipeBrunoJoao/TrabalhoFinalUhul/blob/main/src/pvz.jar)
 
 # Slides do Projeto
 

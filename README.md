@@ -31,6 +31,8 @@ Uma preocupação que tivemos foi em isolar a View, o Controller e Model. Para i
 ## Diagrama Geral da Arquitetura do Jogo (MVC)
 ![diagrama geral](assets/diagramaGeral.png)
 
+Por falta de tempo, não implementamos interfaces para a comunicação entre componentes. Nossa View se comunica com o Controller apenas pela classe Master Controller em `src/src/com/plantsvszombies/game/controller/MasterController.java`. Nosso Model acessa o Controller apenas pela classe Action Listener em `src/src/com/plantsvszombies/game/controller/ActionListener.java`, ao passo que as classes do Controller acessam o Model diretamente. Não há comunicação direta entre o Model e a View. 
+
 ### Componente Model:
 
 **Ficha Técnica**
@@ -58,8 +60,6 @@ item | detalhamento
 Pacote | `src/src/com/plantsvszombies/game/controller`
 Autores | `Bruno Freitas e João Morais`
 Interfaces | `-`
-
-#### Por falta de tempo, não implementamos interfaces para a comunicação entre componentes. Nossa View se comunica com o Controller apenas pela classe Master Controller em `src/src/com/plantsvszombies/game/controller/MasterController.java`. Nosso Model acessa o Controller apenas pela classe Action Listener em `src/src/com/plantsvszombies/game/controller/ActionListener.java`, ao passo que as classes do Controller acessam o Model diretamente. Não há comunicação direta entre o Model e a View. 
 
 # Conclusões e trabalhos futuros
 

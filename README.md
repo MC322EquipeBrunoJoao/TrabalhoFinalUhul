@@ -59,6 +59,8 @@ Pacote | `src/src/com/plantsvszombies/game/controller`
 Autores | `Bruno Freitas e João Morais`
 Interfaces | `-`
 
+#### Por falta de tempo, não implementamos interfaces para a comunicação entre componentes. Nossa View se comunica com o Controller apenas pela classe Master Controller em `src/src/com/plantsvszombies/game/controller/MasterController.java`. Nosso Model acessa o Controller apenas pela classe Action Listener em `src/src/com/plantsvszombies/game/controller/ActionListener.java`, ao passo que as classes do Controller acessam o Model diretamente. Não há comunicação direta entre o Model e a View. 
+
 # Conclusões e trabalhos futuros
 
 Concluímos que podemos fazer melhorias em termos de responsividade da interface gráfica, assim como aumentar a robustez de nossos componentes com o uso de interfaces providas e requeridas, escrever exceções para a importação de arquivos de mídia (texturas e efeitos sonoros) e expandir o número de plantas, projéteis e zumbis do jogo com base na estrutura de classes criada.

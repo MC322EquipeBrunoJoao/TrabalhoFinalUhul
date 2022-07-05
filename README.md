@@ -31,6 +31,34 @@ Uma preocupação que tivemos foi em isolar a View, o Controller e Model. Para i
 ## Diagrama Geral da Arquitetura do Jogo (MVC)
 ![diagrama geral](assets/diagramaGeral.png)
 
+### Componente Model:
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Pacote | `src/src/com/plantsvszombies/game/model`
+Autores | `Bruno Freitas e João Morais`
+Interfaces | `-`
+
+### Componente View:
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Pacote | `src/src/com/plantsvszombies/game/view`
+Autores | `Bruno Freitas e João Morais`
+Interfaces | `-`
+
+### Componente Controller:
+
+
+**Ficha Técnica**
+item | detalhamento
+----- | -----
+Pacote | `src/src/com/plantsvszombies/game/controller`
+Autores | `Bruno Freitas e João Morais`
+Interfaces | `-`
+
 # Conclusões e trabalhos futuros
 
 Concluímos que podemos fazer melhorias em termos de responsividade da interface gráfica, assim como aumentar a robustez de nossos componentes com o uso de interfaces providas e requeridas, escrever exceções para a importação de arquivos de mídia (texturas e efeitos sonoros) e expandir o número de plantas, projéteis e zumbis do jogo com base na estrutura de classes criada.

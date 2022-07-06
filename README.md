@@ -26,6 +26,13 @@ O primeiro desafio que enfrentamos foi definir como implementaríamos os gráfic
 Outro grande desafio para o projeto foi a organização das entidades do jogo em um sistema de classes intuitivo e facilmente expandível. Abordamos essa questão buscando primeiro definir comportamentos gerais com classes abstratas, como na Entity - responsável por atribuir texturas a cada elemento do jogo, na sua herdeira Character - responsável por definir atributos e métodos comuns a todos os seres vivos do jogo, como os pontos de saúde e a ação de tomar dano - e na herdeira dessa última, Plant - que define comportamentos comuns às diferentes plantas do jogo. A partir desses modelos gerais, utilizamos heranças para criar classes de elementos específicos do jogo. Essa organização de classes está representada no componente Model do Diagrama Geral da Arquitetura do Jogo. 
 
 Uma preocupação que tivemos foi em isolar a View, o Controller e Model. Para isso, organizamos o projeto de modo que o único ponto de acesso da View ao restante do código seja pela classe Master Controller, responsável por coordenar os demais controles do jogo. Um problema que tivemos ao programar o Model foi o fato de algumas classes possuirem comportamentos que devem ser informados ao Controller. Nossa primeira abordagem foi fazer essas classes se comunicarem diretamente com os controladores, porém concluímos que isso não seria uma boa prática, já que possibilitava que elas tivessem acesso a todo o controle do jogo. A solução que utilizamos foi a criação da classe Action Listener, que tem a função exclusiva de fazer essa comunicação entre componentes. Essas relações podem ser melhor visualizadas no Diagrama Geral da Arquitetura do Jogo.
+
+# Destaques de Orientação a Objetos
+![Classes1](assets/classes1.png)
+![Classes2]{assets/classes2.png)
+![Classes3](assets/classes3.png)
+
+
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo (MVC)

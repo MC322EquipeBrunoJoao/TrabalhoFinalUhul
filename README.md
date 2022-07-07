@@ -39,7 +39,7 @@ Considerando que cada planta do jogo possui ações únicas e próprias, definim
 
 ### Singleton:
 
-Utilizamos o singleton em todas as classes do Controller, de modo a limitar em 1 unidade o número de instãncias de cada classe desse componente. Dessa maneira, aumentamos a consistência do código - uma vez que a existência de diversas instâncias de um controlador poderia ser problemática para o controle do jogo. Na imagem abaixo, mostramos 2 exemplos da implementação desse padr
+Utilizamos o singleton em todas as classes do Controller, de modo a limitar em 1 unidade o número de instãncias de cada classe desse componente. Dessa maneira, aumentamos a consistência do código - uma vez que a existência de diversas instâncias de um controlador poderia ser problemática para o controle do jogo. Na imagem abaixo, mostramos 2 exemplos da implementação desse padrão de projeto em nosso código.
 
 ![Pattern](assets/design-pattern.png)
 

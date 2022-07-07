@@ -43,6 +43,12 @@ Utilizamos o singleton em todas as classes do Controller, de modo a limitar em 1
 
 ![Pattern](assets/design-pattern.png)
 
+### Strategy:
+Implementamos dois tipos de Tile, o ShopTile(da loja) e o LawnTile(do gramado). A vantagem do Strategy foi permitir, por meio de uma interface chamada ITile, implementada por ambos os tipos de Tile, guardar todos os Tiles do mapa, não importando o seu tipo, em uma mesma matriz do mapa.
+
+![Strategy](assets/Strategy.png)
+
+
 # Diagramas
 
 ## Diagrama Geral da Arquitetura do Jogo (MVC)

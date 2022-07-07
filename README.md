@@ -28,15 +28,19 @@ Outro grande desafio para o projeto foi a organização das entidades do jogo em
 Uma preocupação que tivemos foi em isolar a View, o Controller e Model. Para isso, organizamos o projeto de modo que o único ponto de acesso da View ao restante do código seja pela classe Master Controller, responsável por coordenar os demais controles do jogo. Um problema que tivemos ao programar o Model foi o fato de algumas classes possuirem comportamentos que devem ser informados ao Controller. Nossa primeira abordagem foi fazer essas classes se comunicarem diretamente com os controladores, porém concluímos que isso não seria uma boa prática, já que possibilitava que elas tivessem acesso a todo o controle do jogo. A solução que utilizamos foi a criação da classe Action Listener, que tem a função exclusiva de fazer essa comunicação entre componentes. Essas relações podem ser melhor visualizadas no Diagrama Geral da Arquitetura do Jogo.
 
 # Destaques de Orientação a Objetos
-## Diagrama de Classes 
-![Classes1](assets/classes1.png)
-![Classes2](assets/classes2.png)
-![Classes3](assets/classes3.png)
 
-## Código de destaque OO
+### Polimorfismo:
+
+Considerando que cada planta do jogo possui ações únicas e próprias, definimos o método *act()* na classe abstrata Plant, superclasse das classes de plantas, de modo que cada herdeira deve implementá-lo à sua maneira. No controlador de entidades, as instâncias das plantas que estão vivas são colocadas em um vetor declarado nessa superclasse. A cada atualização do estado do jogo, itera-se sobre esse vetor e chama-se o método *act()* de cada planta. Utilizamos esse polimorfismo para que ficasse fácil a expansão do jogo com a criação de outras plantas, bastando que as novas classes herdassem Plant e implementassem *act()* conforme o seu comportamento específico. 
+
 ![Polimorfismo](assets/polimorfismo.png)
 
 # Destaques do pattern
+
+### Singleton:
+
+Utilizamos o singleton em todas as classes do Controller, de modo a limitar em 1 unidade o número de instãncias de cada classe desse componente. Dessa maneira, aumentamos a consistência do código - uma vez que a existência de diversas instâncias de um controlador poderia ser problemática para o controle do jogo. 
+
 ![Pattern](assets/design-pattern.png)
 
 # Diagramas
